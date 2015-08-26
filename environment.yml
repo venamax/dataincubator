@@ -106,9 +106,11 @@ dependencies:
   - beautifulsoup4==4.3.2
   - billiard==3.3.0.20
   - celery==3.1.18
+  - cython==0.23.1
   - docker-py==1.3.1
   - ediblepickle=1.1.3
   - filechunkio==1.6
+  - gensim
   - ipython-sql==0.3.6
   - kombu==3.0.26
   - mock==1.3.0
