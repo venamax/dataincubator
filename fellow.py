@@ -31,7 +31,7 @@ import ml           # noqa
 import mr           # noqa
 import nlp          # noqa
 import spark        # noqa
-import sql          # noqa
+import SQL          # noqa
 import ts           # noqa
 
 @app.task(name="celery.list_tasks")
