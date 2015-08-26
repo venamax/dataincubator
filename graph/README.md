@@ -27,6 +27,12 @@ to see a list of (party) pages.  For each party's page, grab all the captions.
      stage.  This makes your work more reproducible.  It's usually faster to
      download more data than you need now than to have to redownload more data
      later.
+  4. To avoid having to re-scrape every time you run your code, you can
+	 consider saving the data to disk, and having the parsing code load a file.
+	 A checkpoint library like
+	 [ediblepickle](https://pypi.python.org/pypi/ediblepickle/1.1.3) can
+     streamline the process so that the time-consuming code will only be run
+     when necessary.
 
 Now that you have a list of all captions, you should probably save the data on
 disk so that you can quickly retrieve it.  Now comes the parsing part.
