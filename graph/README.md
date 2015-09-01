@@ -33,6 +33,8 @@ to see a list of (party) pages.  For each party's page, grab all the captions.
 	 [ediblepickle](https://pypi.python.org/pypi/ediblepickle/1.1.3) can
      streamline the process so that the time-consuming code will only be run
      when necessary.
+  5. HTTP requests can sometimes fail inconsistently. You should expect to
+     run into this issue and deal with it as best you can.
 
 Now that you have a list of all captions, you should probably save the data on
 disk so that you can quickly retrieve it.  Now comes the parsing part.
