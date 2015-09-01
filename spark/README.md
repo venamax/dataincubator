@@ -104,10 +104,15 @@ Each post on StackExchange can be upvoted, downvoted, and favorited. One
 "sanity check" we can do is to look at the ratio of upvotes to downvotes as a
 function of how many times the post has been favorited.  Using post favorite
 counts as the keys for your mapper, calculate the average percentage of upvotes
-(upvotes / (upvotes + downvotes)) for the first 100 keys (starting from the
+(upvotes / (upvotes + downvotes)) for the first 50 keys (starting from the
 least favorited posts).
   
 Do the analysis on the stats.stackexchange.com dataset.
+
+**Checkpoint**
+Total upvotes: 313,819
+Total downvotes: 13,019
+Mean of top 50 favorite counts: 24.76
 
 ## user_answer_percentage_by_reputation:
 
@@ -121,11 +126,19 @@ over all users.
 
 Again, you only need to run this on the statistics overflow set.
 
-## user_reputation_by_tenue:
+**Checkpoint**
+Total questions: 52,060
+Total answers: 55,304
+Top 99 users' average reputation: 11893.464646464647
+
+## user_reputation_by_tenure:
 If we use the total number of posts made on the site as a metric for tenure, we
 can look at the differences between "younger" and "older" users. You can
 imagine there might be many interesting features - for now just return the top
 100 post counts and the average reputation for every user who has that count.
+
+**Checkpoint**
+Mean of top 100 post counts: 281.51
 
 ## quick_answers_by_hour
 How long do you have to wait to get your question answered? Look at the set of
@@ -142,6 +155,10 @@ Return a list, whose ith element correspond to ith hour (e.g. 0 -> midnight, 1
 
 Question: What biases are present in our result, that we don't account for? How
 would we handle this?
+
+**Checkpoint**
+Total quick accepted answers: 8,468
+Total accepted answers: 17,096
 
 ## quick_answers_by_hour_full
 Same as above, but on the full StackOverflow dataset.

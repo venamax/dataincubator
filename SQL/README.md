@@ -43,9 +43,12 @@ Return a list of tuples of the form:
 ```
     (zipcode, mean grade, standard error, number of inspections)
 ```
-for each of the 183 zipcodes in the city with over 100 inspections. Sort the
+for each of the 184 zipcodes in the city with over 100 inspections. Sort the
 list in ascending order by mean grade. You can read more about standard error
 on [wikipedia](http://en.wikipedia.org/wiki/Standard_error).
+
+**Checkpoint**
+Total entries in valid zipcodes: 531,126
 
 ## score_by_map
 The above are not terribly enlightening.  Use [CartoDB](http://cartodb.com/)
@@ -69,14 +72,20 @@ for each of the city's five boroughs. Sort the list in ascending order by grade.
 
 **Hint**: you will have to perform a join with the `boroughs` table.
 
+**Checkpoint**
+Total entries in valid boroughs: 531,832
+
 ## score_by_cuisine
 Return a list of the 75 tuples of the form
     ```
     (cuisine, mean grade, stderr, number of inspections)
     ```
-for each of the 75 cuisine types with at least 100 inspections. Sort the list
+for each of the 75 cuisine types with at least 100 inspections. Sort the list 
 in ascending order by score. Are the least sanitary and most sanitary cuisine
 types surprising?
+
+**Checkpoint**
+Total entries from valid cuisines: 531,529
 
 ## violation_by_cuisine
 Which cuisines tend to have a disproportionate number of what which violations?
@@ -109,3 +118,6 @@ this ratio gives the right answer.  Return the 20 highest ratios of the form:
 3. The ratios don't mean much when the number of violations of a given type and
    for a specific category are not large (why not?).  Be sure to filter these
    out.  We chose 100 as our cutoff.
+
+**Checkpoint**:
+Top 20 ratios mean: 1.95724597861122
