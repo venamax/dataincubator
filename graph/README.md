@@ -10,7 +10,7 @@ annotated captions labeling those that appear in the photos.  We can think of
 this as implicitly implying a social graph: there is a connection between two
 individuals if they appear in a picture together.
 
-The first step is to fetch the data.  This comes in two phases.
+Fetching the data can be broken down into two phases:
 
 The first step is to crawl the data.  We want photos from parties before
 December 1st, 2014.  Go to `http://www.newyorksocialdiary.com/party-pictures`

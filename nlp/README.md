@@ -30,7 +30,8 @@ The data is available at:
 # Questions
 
 Note that all functions take an argument `record`. Samples of `record` are
-given in `test_json.py`
+given in `test_json.py`. Your model will be passed a single record during
+grading.
 
 ## bag_of_words_model
 Build a linear model based on the count of the words in each document

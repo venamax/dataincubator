@@ -17,7 +17,11 @@ Postgresql into five tables:
    sqlite, in order to do mathematical calculations like square root, you will
    need to compile and install the extension described on the
    [wiki](https://sites.google.com/a/thedataincubator.com/the-data-incubator-wiki/course-information-and-logistics/getting-started/setup).
-2. Postgresql has a [`\copy`
+2. Sqlite3 has a convenient .import function which can create tables from .csv .
+   You may want to set up your databases using the sqlite shell, then use Python
+   just to run the SELECT queries.
+
+   Postgresql has an equivalent [`\copy`
    command](http://www.postgresql.org/docs/9.2/static/app-psql.html#APP-PSQL-META-COMMANDS-COPY)
    that can both save and load files in various formats.  It is a convenience
    wrapper for the [`copy`
@@ -99,7 +103,8 @@ this ratio gives the right answer.  Return the 20 highest ratios of the form:
    post](http://stackoverflow.com/questions/972877/calculate-frequency-using-sql).
 2. The definition of a violation changes with time.  For example, 10A can mean
    two different things "Toilet facility not maintained ..." or "Vermin or
-   other live animal present ..." when things were prior to 2003.
+   other live animal present ..." when things were prior to 2003. To deal with
+   this, you should only work with violation codes which have over 200 occurrences.
 3. The ratios don't mean much when the number of violations of a given type and
    for a specific category are not large (why not?).  Be sure to filter these
    out.  We chose 100 as our cutoff.

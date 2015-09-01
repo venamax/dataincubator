@@ -121,17 +121,19 @@ Note that a pipeline can have multiple transformers chained up but at most one
 
 ## A few helpful notes about performance.
 
-1. To deploy a model (get a trained model into Heroku), we suggest using the
+1. To deploy a model, we suggest using the
    [`dill` library](https://pypi.python.org/pypi/dill) or
    [`joblib`](http://scikit-learn.org/stable/modules/model_persistence.html) to
    save it to disk and check it into git.  This allows you to train the model
    offline in another file but run it here by reading it in this file.  The
    model is way too complicated to be trained in real-time!
 2. Make sure you load the `dill` file upon server start, not upon a call to
-   `solution`.  This can be done by loading the model the model into the global
-   scope.  The model is way too complicated to be even loaded in real-time!
-3. Make sure you call `predict` once per call of `def solution`.  This can be
-   done because `predict` is made to take a list of elements.
+   the solution function.  This can be done by loading the model into the
+   global scope. The model is too complicated to be even loaded in real-time!
+3. Make sure you call `predict` once per call of the solution function, and that
+   it returns a single number. For testing convenience you may want to allow it
+   to work using a list of json dicts as input, but during grading the model
+   will be passed a single JSON blob at a time.
 4. You probably want to use GridSearchCV to find the best hyperparameters by
    splitting the data into training and test.  But for the final model that you
    submit, don't forget to retrain on all your data (training and test) with
@@ -151,7 +153,7 @@ cities are probably higher than others and use this as an estimator.
 Build an estimator that uses `groupby` and `mean` to compute the
 average rating in that city.  Use this as a predictor.
 
-**Note:** `def solution` takes an argument `record`.
+**Note:** `def city_model` etc. takes an argument `record`.
 
 ## lat_long_model
 You can imagine that a city-based model might not be sufficiently fine-grained.

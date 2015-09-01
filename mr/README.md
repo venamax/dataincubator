@@ -64,10 +64,10 @@ probably doing it wrong.  For example, mapreduce jobs for
 Return a list of the top 100 words in article text (in no particular order).
 You will need to write this as two map reduces:
 
-1. The first job is similar to standard wordcount but with a few .  The data
-   provided for wikipedia is in in *.xml.bz2 format.  Mrjob will automatically
-   decompress bz2.  We'll deal with the xml in the next question.  For now,
-   just treat it as text.  A few hints:
+1. The first job is similar to standard wordcount but with a few tweaks. 
+   The data provided for wikipedia is in in *.xml.bz2 format.  Mrjob will
+   automatically decompress bz2.  We'll deal with the xml in the next question.
+   For now, just treat it as text.  A few hints:
    - To split the words, use the regular expression "\w+".
    - Words are not case sensitive: i.e. "The" and "the" reference to the same
      word.  You can use `string.lower()` to get a single case-insenstive
