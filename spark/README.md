@@ -163,6 +163,10 @@ Total accepted answers: 17,096
 ## quick_answers_by_hour_full
 Same as above, but on the full StackOverflow dataset.
 
+**Checkpoint**
+Total quick accepted answers: 3,700,224
+Total accepted answers: 5,086,888
+
 ## identify_veterans_from_first_post_stats
 It can be interesting to think about what factors influence a user to remain
 active on the site over a long period of time.  In order not to bias the
@@ -184,10 +188,13 @@ views, number of answers, and number of favorites of users' first question.
 *Question*: What story could you tell from these numbers? How do the numbers
 support it?
 
-*Checkpoint*
-The reference solution finds 2,027 veteran users and 24,864 brief users in the
-stats dataset.  For the full stackoverflow dataset, it finds 288,285 veterans
-and 1,848,628 brief users.
+**Checkpoint**
+Total brief users: 24,864
+Total veteran users: 2,027
 
 ## identify_veterans_from_first_post_stats_full
 Same thing on the full StackOverflow dataset.
+
+**Checkpoint**
+Total brief users: 1,848,628
+Total veteran users: 288,285

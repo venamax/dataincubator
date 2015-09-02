@@ -109,6 +109,9 @@ You will need to write this as two map reduces:
 3. When you have the top 100 words and their count, simply download the results
    (using aws cli) and copy and paste the results.
 
+**Checkpoint**
+Total unique words: 1,584,646
+
 ## top100_words_simple_text
 Notice that the words `page` and `text` make it into the top 100 words in the
 previous problem.  These are not common English words!  If you look at the xml
@@ -125,6 +128,9 @@ should words outside of the tag `<text></text>`.
 
 3. Don't forget that the Wikipedia format can have multiple revisions but you
    only want the latest one.
+
+**Checkpoint**
+Total unique words: 868,223
 
 ## top100_words_simple_no_metadata
 Finally, notice that 'www' and 'http' make it into the list of top 100 words in
