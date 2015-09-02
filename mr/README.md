@@ -149,6 +149,9 @@ colorfully-named
 provisioned on the `mrjob` and supports the convenient helper function
 `filter_text()`.
 
+**Checkpoint**
+Total unique words: 863,909
+
 ## wikipedia_entropy
 The [Shannon
 entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a
