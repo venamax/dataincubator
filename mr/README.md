@@ -279,3 +279,6 @@ notion that the articles `A` and `C` refer to tightly related concepts.
 Don't be afraid if these answers are not particularly insightful.  Simple
 Wikipedia is not as rich as English Wikipedia.  However, you should notice that
 the articles are closely related conceptually.
+
+**Checkpoint**
+Total unique links: 824,657
