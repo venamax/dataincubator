@@ -33,7 +33,7 @@ lessons, first!)
 5. Finally, `git add` and `git commit` your solution, then run
    `git push grader master` to submit your answer. You should get a
    bunch of output from the grader, along with your grade. You should
-   also login to https://www.thedataincubator.com/gradebook.html to
+   also login to your dashboard - check the gradebook linked there to
    confirm that your grade is being recorded correctly.
 
 That's it! Good luck with the course!
