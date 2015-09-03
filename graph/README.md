@@ -61,6 +61,11 @@ disk so that you can quickly retrieve it.  Now comes the parsing part.
      probably be filtered out b/c they ultimately refer to the same person:
      "Michael Bloomberg."
 
+**Further considerations (not included in solution)**
+  1. Who is Patrick McMullan and should he be included in the results? How would
+     you address this?
+  2. How else could you improve this graph to improve its quality?
+
 For the analysis, we think of the problem in terms of a
 [network](http://en.wikipedia.org/wiki/Computer_network) or a
 [graph](http://en.wikipedia.org/wiki/Graph_%28mathematics%29).  Any time a pair
@@ -71,10 +76,16 @@ this has an obvious analog in terms of an undirected [weighted
 graph](http://en.wikipedia.org/wiki/Graph_%28mathematics%29#Weighted_graph).
 In this problem, we will analyze the social graph of the new york social elite.
 
-For this problem, we recommend using python's `networkx` library.
+We recommend using python's `networkx` library.
 
 
 # Questions
+
+**Checkpoint**
+Total number of names found: 113,031
+Total number of pairs found: 196,245
+Total number of raw captions: 113,325
+Total number of valid captions: 102,736
 
 ## 1. degree
 The simplest question to ask is "who is the most popular"?  The easiest way to
@@ -82,6 +93,16 @@ answer this question is to look at how many connections everyone has.  Return
 the top 100 people and their degree.  Remember that if an edge of the graph has
 weight 2, it counts for 2 in the degree.
 
+**Checkpoint**
+Top 100 .describe()
+"count": 100.0
+"mean": 109.96
+"std": 52.4777817343
+"min": 71.0
+"25%": 79.75
+"50%": 91.0
+"75%": 120.25
+"max": 373.0
 
 ## 2. pagerank
 A similar way to determine popularity is to look at their
@@ -94,9 +115,31 @@ chain](http://en.wikipedia.org/wiki/Markov_chain) implied by the social graph.
 Use 0.85 as the damping parameter so that there is a 15% chance of jumping to
 another vertex at random.
 
+**Checkpoint**
+Top 100 .describe()
+"count": 100.0
+"mean": 0.0001841088
+"std": 0.0000758068
+"min": 0.0001238355
+"25%": 0.0001415028
+"50%": 0.0001616183
+"75%": 0.0001972663
+"max": 0.0006085816
+
 ## 3. best_friends
 Another interesting question is who tend to co-occur with each other.  Give
 us the 100 edges with the highest weights.
 
 Google these people and see what their connection is.  Can we use this to
 detect instances of infidelity?
+
+**Checkpoint**
+Top 100 .describe()
+"count": 100.0
+"mean": 25.84
+"std": 16.0395470855
+"min": 14.0
+"25%": 16.0
+"50%": 19.0
+"75%": 29.25
+"max": 109.0
