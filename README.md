@@ -21,7 +21,11 @@ lessons, first!)
    has more detailed instructions if you wish to add the ForwardAgent 
    option to your `.ssh/config`file.
 
-1. Open up `assignment1/README.md`. Read the instructions, and then edit
+1. Run `git checkout master`. Our provisioning code auto-checks-out a
+   different branch (you can run `git status`) to see, 
+   but you'll want to be on `master`.
+
+2. Open up `assignment1/README.md`. Read the instructions, and then edit
    `assignment1/__init__.py`
 
    Each module lives in its own directory with a `README.md` (with
@@ -29,19 +33,19 @@ lessons, first!)
    All code used to generate solutions should live in the respective
    module's directory (possibly in a `src` sub-directory).
 
-2. In `assignment1/__init__.py`, you'll see a function `add`, along with
+3. In `assignment1/__init__.py`, you'll see a function `add`, along with
    some decorators up top.  Make that function add the two numbers up.
    *Do not modify the decorators*.
 
-3. Each question has some a decorator specifying the return type, along
+4. Each question has some a decorator specifying the return type, along
    with some test cases. Make sure that your function works correctly on
    the test cases and always returns the right type. You can run
    `validate.py` to do this for you.
 
-4. Go ahead and implement the `add` function, and then run `validate.py`
+5. Go ahead and implement the `add` function, and then run `validate.py`
    to make sure you return the right output format.
 
-5. Finally, `git add` and `git commit` your solution, then run
+6. Finally, `git add` and `git commit` your solution, then run
    `git push grader master` to submit your answer. You should get a
    bunch of output from the grader, along with your grade. You should
    also login to your dashboard - check the gradebook linked there to
