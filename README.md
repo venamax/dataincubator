@@ -10,6 +10,12 @@ completed this, you'll be ready to try your hand at the more substantive
 miniprojects. (Though you'll probably want to go through some of the
 lessons, first!)
 
+0. You need to forward your agent and use the key you have registered on your 
+   Fellow Profile. When you SSH in to this box, add the -A flag.
+   [This page](https://developer.github.com/guides/using-ssh-agent-forwarding/)
+   has more information if you wish to add the ForwardAgent option to
+   your `.ssh/config` file.
+
 1. Open up `assignment1/README.md`. Read the instructions, and then edit
    `assignment1/__init__.py`
 
