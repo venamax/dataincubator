@@ -11,11 +11,14 @@ miniprojects. (Though you'll probably want to go through some of the
 lessons, first!)
 
 0. You need to forward your SSH agent and use the SSH key you have registered on your 
-   Fellow Profile. You'll need to start an SSH agent on your local machine and add
+   Fellow Profile. As with your box, there's about a 30 minute lag time between key
+   updates on the site and having that reflected on the grader (so you can push).
+   You'll need to start an SSH agent on your local machine and add
    your key to the agent. 
    [Step 3 of this link](https://help.github.com/articles/generating-ssh-keys/)
    explains the process. Even if you've run through these instructions before,
-   restart your SSH agent. Then, when you SSH in to this box, add the -A flag.
+   restart your SSH agent and add your key. 
+   Then, when you SSH in to this box, add the -A flag.
    e.g. `ssh -A vagrant@222.222.222.2`
    [This page](https://developer.github.com/guides/using-ssh-agent-forwarding/)
    has more detailed instructions if you wish to add the ForwardAgent 
