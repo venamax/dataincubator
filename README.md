@@ -12,10 +12,14 @@ lessons, first!)
 
 0. You need to forward your SSH agent and use the SSH key you have registered on your 
    Fellow Profile. You'll need to start an SSH agent on your local machine and add
-   your key to the agent. When you SSH in to this box, add the -A flag.
+   your key to the agent. 
+   [Step 3 of this link](https://help.github.com/articles/generating-ssh-keys/)
+   explains the process. Even if you've run through these instructions before,
+   restart your SSH agent. Then, when you SSH in to this box, add the -A flag.
+   e.g. `ssh -A vagrant@222.222.222.2`
    [This page](https://developer.github.com/guides/using-ssh-agent-forwarding/)
-   has more information on this process, and more detailed instructions
-   if you wish to add the ForwardAgent option to your `.ssh/config`file.
+   has more detailed instructions if you wish to add the ForwardAgent 
+   option to your `.ssh/config`file.
 
 1. Open up `assignment1/README.md`. Read the instructions, and then edit
    `assignment1/__init__.py`
