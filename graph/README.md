@@ -47,7 +47,7 @@ disk so that you can quickly retrieve it.  Now comes the parsing part.
         tagging](http://www.nltk.org/book/ch05.html) but it is a little slow.
         There may also be heuristics that accomplish the same thing.
       - Look for commonly repeated threads (e.g. you might end up picking up
-        the photo credtis).
+        the photo credits or people such as "a friend").
       - Long captions are often not lists of people.  The cutoff is subjective,
         but for grading purposes, *set that cutoff at 250 characters*.
   2. You will want to separate the captions based on various forms of
@@ -60,11 +60,16 @@ disk so that you can quickly retrieve it.  Now comes the parsing part.
      Can you find other ('optional') titles that are being used?  They should
      probably be filtered out b/c they ultimately refer to the same person:
      "Michael Bloomberg."
+  5. When parsing names from captions, it can help to look at your output
+     frequently and address the problems that you see coming up, iterating
+     until you have a list that looks reasonable. This is the approach used
+     in the reference solution. Because we can only asymptotically approach
+     perfect identification and entity matching, we have to stop somewhere.
 
 **Further considerations (not included in solution)**
   1. Who is Patrick McMullan and should he be included in the results? How would
      you address this?
-  2. How else could you improve this graph to improve its quality?
+  2. What else could you do to improve the quality of the graph's information?
 
 For the analysis, we think of the problem in terms of a
 [network](http://en.wikipedia.org/wiki/Computer_network) or a
