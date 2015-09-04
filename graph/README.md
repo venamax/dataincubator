@@ -60,6 +60,9 @@ disk so that you can quickly retrieve it.  Now comes the parsing part.
      Can you find other ('optional') titles that are being used?  They should
      probably be filtered out b/c they ultimately refer to the same person:
      "Michael Bloomberg."
+  4. There is a special case you might find where couples are written as eg.
+     "John and Mary Smith". You will need to write some extra logic to make
+     sure this properly parses to two names: "John Smith" and "Mary Smith".
   5. When parsing names from captions, it can help to look at your output
      frequently and address the problems that you see coming up, iterating
      until you have a list that looks reasonable. This is the approach used
