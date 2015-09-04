@@ -70,4 +70,4 @@ def link_sstats_english():
 @fellow.app.task(name="mr.double_link")
 @typecheck.returns("100 * ((string, string), number)")
 def double_link_stats():
-    return [((u"communes of the bouches-du-rh\u00f4ne department", u"france"), 0.024170164983320565)] * 100
+    return [(("idaho", "list of cities in idaho"), 0.055922694796753325)] * 100

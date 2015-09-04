@@ -281,4 +281,4 @@ Wikipedia is not as rich as English Wikipedia.  However, you should notice that
 the articles are closely related conceptually.
 
 **Checkpoint**
-Total unique links: 824,657
+Total unique links: 77,320,731
