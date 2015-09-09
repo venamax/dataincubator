@@ -3,9 +3,9 @@ import fellow
 import typecheck
 
 @fellow.app.task(name="sql.score_by_zipcode")
-@typecheck.returns("183 * (string, number, number, count)")
+@typecheck.returns("184 * (string, number, number, count)")
 def score_by_zipcode():
-    return [("11201", 21.9060928719313812, 0.179441607823702, 6762)] * 183
+    return [("11201", 21.9060928719313812, 0.179441607823702, 6762)] * 184
 
 
 @fellow.app.task(name="sql.score_by_map")
