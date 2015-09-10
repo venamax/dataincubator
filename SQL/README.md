@@ -41,11 +41,22 @@ Postgresql into five tables:
 ## score_by_zipcode
 Return a list of tuples of the form:
 ```
-    (zipcode, mean grade, standard error, number of inspections)
+(zipcode, mean score, standard error, number of violations)
 ```
-for each of the 184 zipcodes in the city with over 100 inspections. Sort the
-list in ascending order by mean grade. You can read more about standard error
+for each of the 184 zipcodes in the city with over 100 violations. Sort the
+list in ascending order by mean score. You can read more about standard error
 on [wikipedia](http://en.wikipedia.org/wiki/Standard_error).
+
+**Note:** There is an interesting discussion here about what the mean score
+*means* in this dataset. Think about what we're actually calculating - 
+does it represent what we're trying to understand about these zipcodes?
+
+In other words, what is the difference between the question we're trying
+to answer with this analysis intuitively and the question we're actually
+answering?
+
+If we were to do a different calculation, what biases would we run into?
+How should we deal with this kind of situation as data scientists? 
 
 **Checkpoint**
 Total entries in valid zipcodes: 531,126
@@ -66,7 +77,7 @@ Liberty), Financial District, Chinatown, and Coney Island fare?
 ## score_by_borough
 Return a list of tuples of the form:
     ```
-    (borough, mean grade, stderr, number of inspections)
+    (borough, mean score, stderr, number of violations)
     ```
 for each of the city's five boroughs. Sort the list in ascending order by grade.
 
@@ -78,11 +89,15 @@ Total entries in valid boroughs: 531,832
 ## score_by_cuisine
 Return a list of the 75 tuples of the form
     ```
-    (cuisine, mean grade, stderr, number of inspections)
+    (cuisine, mean score, stderr, number of violations)
     ```
 for each of the 75 cuisine types with at least 100 inspections. Sort the list 
 in ascending order by score. Are the least sanitary and most sanitary cuisine
 types surprising?
+
+**Note:** It's interesting to think again about what this analysis is trying
+to say and how it differs from the analysis by zipcode. How should this
+affect the calculation in your opinion?
 
 **Checkpoint**
 Total entries from valid cuisines: 531,529
