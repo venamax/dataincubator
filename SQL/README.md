@@ -104,7 +104,7 @@ type of violation given a specific cuisine type and divide it by the
 unconditional probability of the violation for the entire population. Taking
 this ratio gives the right answer.  Return the 20 highest ratios of the form:
     ```
-        ((cuisine, violation), ratio, count)
+    ((cuisine, violation), ratio, count)
     ```
 
 **Hint**:
@@ -113,8 +113,9 @@ this ratio gives the right answer.  Return the 20 highest ratios of the form:
 2. The definition of a violation changes with time.  For example, 10A can mean
    two different things "Toilet facility not maintained ..." or "Vermin or
    other live animal present ..." when things were prior to 2003. To deal with
-   this, you should limit your analysis to violations with end date after Jan 1,
-   2014.
+   this, you should limit your analysis to violation codes with end date after
+   Jan 1, 2014. (This end date refers to the validity time ranges in
+   Violation.txt).
 3. The ratios don't mean much when the number of violations of a given type and
    for a specific category are not large (why not?).  Be sure to filter these
    out.  We chose 100 as our cutoff.
