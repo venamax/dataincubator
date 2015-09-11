@@ -36,6 +36,12 @@ Postgresql into five tables:
    python script that converts these 'inadvertent' delimiters into semicolons
    (';').
 
+# Submission
+Replace the default values in `__init__.py` with your answers. Avoid running
+"on-the-fly" computations or scripts in this file. Ideally it should be a
+static list which you paste in or load from file. The less moving parts there
+are, the easier it is on the grader.
+
 # Questions
 
 ## score_by_zipcode

@@ -96,6 +96,12 @@ necessary.
 
 *Question:* What are the circumstances that make Spark a favorable/unfavorable approach here?
 
+# Submission                                                                                                                                                                                                 
+Replace the default values in `__init__.py` with your answers. Avoid running                                                                                                                                 
+"on-the-fly" computations or scripts in this file. Ideally it should be a                                                                                                                                    
+static list which you paste in or load from file. The less moving parts there                                                                                                                                
+are, the easier it is on the grader.
+
 # Questions
 
 ## upvote_percentage_by_favorites

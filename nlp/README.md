@@ -27,6 +27,12 @@ The data is available at:
   estimator and/or parameters. (Remember to retrain on the entire dataset
   before submitting).
 
+# Submission                                                                                                                                                                                                 
+Replace the return values in `__init__.py` with predictions from your models.
+Avoid running "on-the-fly" computations or scripts in this file. Ideally you
+should load your pickled model from file (in the global scope) then call
+`model.predict(record)`.
+
 # Questions
 
 Note that all functions take an argument `record`. Samples of `record` are

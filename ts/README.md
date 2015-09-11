@@ -62,6 +62,12 @@ estimator that takes an estimator as an argument and builds the resulting
 while the `predict` method should look up the corresponding model and perform a
 predict on each, etc ...
 
+# Submission                                                                                                                                                                                                 
+Replace the return values in `__init__.py` with predictions from your models.                                                                                                                                
+Avoid running "on-the-fly" computations or scripts in this file. Ideally you                                                                                                                                 
+should load your pickled model from file (in the global scope) then call                                                                                                                                     
+`model.predict(line)`.
+
 # Questions
 
 ## month_hour_model

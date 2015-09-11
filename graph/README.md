@@ -86,6 +86,11 @@ In this problem, we will analyze the social graph of the new york social elite.
 
 We recommend using python's `networkx` library.
 
+# Submission                                                                                                                                                                                                 
+Replace the default values in `__init__.py` with your answers. Avoid running                                                                                                                                 
+"on-the-fly" computations or scripts in this file. Ideally it should be a                                                                                                                                    
+static list which you paste in or load from file. The less moving parts there                                                                                                                                
+are, the easier it is on the grader.
 
 # Questions
 

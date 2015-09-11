@@ -119,7 +119,7 @@ Note that a pipeline can have multiple transformers chained up but at most one
 (optional) terminal estimator.
 
 
-## A few helpful notes about performance.
+## A few helpful notes about performance and submitting in `__init__.py`.
 
 1. To deploy a model, we suggest using the
    [`dill` library](https://pypi.python.org/pypi/dill) or
