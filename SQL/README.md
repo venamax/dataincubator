@@ -136,4 +136,4 @@ this ratio gives the right answer.  Return the 20 highest ratios of the form:
    out.  We chose 100 as our cutoff.
 
 **Checkpoint**:
-Top 20 ratios mean: 1.95724597861122
+Top 20 ratios mean: 2.37009216349859
