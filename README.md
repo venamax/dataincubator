@@ -72,3 +72,14 @@ That's it! Good luck with the course!
 
   Just be careful --- if you install lots of packages, grading might
   take longer!
+
+# Workflow
+
+Because of your limited time, it's advisable to think about your workflow before launching into a project. Often it's much more efficient to code a test or proof-of-concept early in the week to avoid running into significant roadblocks later in the week.
+
+For the graph project this might look like:
+1. Can I successfully scrape a page and access the text strings?
+1. Can I parse names and get the pairs I expect?
+1. Can I construct a graph from pairs of names and do its attributes make sense?
+
+This work will iron out (or at least raise) a lot of important questions early on such as what extra libraries you may or may not need.
