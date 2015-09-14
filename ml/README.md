@@ -4,8 +4,9 @@ Our objective is to predict a new venue's popularity from information available
 when the venue opens.  We will do this by machine learning from a dataset of
 venue popularities provided by Yelp.  The dataset contains meta data about the
 venue (where it is located, the type of food served, etc ...).  It also
-contains a star rating.  This tutorial will walk you through one way to build a
-machine-learning algorithm.
+contains a star rating. Note that the venues are not limited to restaurants.
+This tutorial will walk you through one way to build a machine-learning
+algorithm.
 
 ## Metric
 

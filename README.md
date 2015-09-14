@@ -75,11 +75,22 @@ That's it! Good luck with the course!
 
 # Workflow
 
-Because of your limited time, it's advisable to think about your workflow before launching into a project. Often it's much more efficient to code a test or proof-of-concept early in the week to avoid running into significant roadblocks later in the week.
+Because of your limited time, it's advisable to think about your workflow
+before launching into a project. Often it's much more efficient to code a
+test or proof-of-concept early in the week to avoid running into
+significant roadblocks later in the week.
 
 For the graph project this might look like:
 1. Can I successfully scrape a page and access the text strings?
 1. Can I parse names and get the pairs I expect?
 1. Can I construct a graph from pairs of names and do its attributes make sense?
 
-This work will iron out (or at least raise) a lot of important questions early on such as what extra libraries you may or may not need.
+This work will iron out (or at least raise) a lot of important questions early
+on such as what extra libraries you may or may not need.
+
+# Deployment
+
+In general, you'll need to edit `__init__.py` with your answers, commit to the
+git repo and then push the grader. It makes sense to keep your source code,
+binaries, databases, etc. *out* of the repository since they won't be needed
+by the grader and they'll just take up memory and time.
