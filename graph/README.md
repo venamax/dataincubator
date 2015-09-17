@@ -53,6 +53,7 @@ disk so that you can quickly retrieve it.  Now comes the parsing part.
   2. You will want to separate the captions based on various forms of
      punctuation.  Try using `re.split`, which is more sophisticated than
      `string.split`.
+     **Note**: The reference solution uses regex exclusively for name parsing.
   3. You might find a person named "ra Lebenthal".  There is no one by this
      name.  Can anyone spot what's happening here?
   4. This site is pretty formal and likes to say things like "Mayor Michael
