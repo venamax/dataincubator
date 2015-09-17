@@ -154,6 +154,9 @@ cities are probably higher than others and use this as an estimator.
 Build an estimator that uses `groupby` and `mean` to compute the
 average rating in that city.  Use this as a predictor.
 
+**Question:** In the absence of any information about a city, what score would
+you assign a restaurant in that city?
+
 **Note:** `def city_model` etc. takes an argument `record`.
 
 ## lat_long_model
