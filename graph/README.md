@@ -96,8 +96,8 @@ are, the easier it is on the grader.
 # Questions
 
 **Checkpoint**
-Total number of names found: 113,031
-Total number of pairs found: 196,245
+Total number of unique names found: 113,031
+Total number of unique, non-reflexive pairs found: 196,245
 Total number of raw captions: 113,325
 Total number of valid captions: 102,736
 
