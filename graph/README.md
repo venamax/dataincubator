@@ -101,6 +101,9 @@ Total number of unique, non-reflexive pairs found: 196,245
 Total number of raw captions: 113,325
 Total number of valid captions: 102,736
 
+"non-reflexive" excludes the unwanted cases where someone is connected to
+themselves.
+
 ## 1. degree
 The simplest question to ask is "who is the most popular"?  The easiest way to
 answer this question is to look at how many connections everyone has.  Return
