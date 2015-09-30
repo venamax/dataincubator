@@ -3,22 +3,23 @@ We are going to be running mapreduce jobs on the wikipedia dataset.  The
 dataset is available (pre-chunked) on
 [s3](s3://thedataincubator-course/mrdata/simple/).
 
-To solve this, you will need to run mrjob on AWS EMR.  The data is stored on
-S3.  For development, we highly recommend you download a single chunk onto your
-computer:
+To solve this, you will need to run mrjob on AWS EMR. Because of resource constraints, we
+highly recommend running most of your code locally using the data stored on S3.
+Only two questions require the use of AWS due to the size of the input/computation time.
+For development, you can even use a single chunk:
 
 ```
 wget https://s3.amazonaws.com/thedataincubator-course/mrdata/simple/part-00026.xml.bz2
 ```
 
-Then take a small sample that is small enough that mrjob can process the it in
-a few seconds.  Your development cycle should be:
+That is small enough that mrjob can process the it in a few seconds.
+Your development cycle should be:
 
-  1. Get your job to work locally on the sampled chunk.  This will greatly
-  speed-up your development.
-  2. Get your job to work localy on the full chunk you downloaded.
-  3. Get your job to work on EMR for all of simple english.
-  4. Get your job to work on EMR for all of english wikipedia.
+  1. Get your job to work locally on one chunk.  This will greatly speed up your
+development.
+  2. Get your job to work locally on the full dataset you downloaded.
+  3. Get your job to work on EMR for all of english wikipedia.
+(Only for entropy and link stats)
 
 By default, mrjob (when run on EMR) only uploads the mrjob python file and no
 supporting libraries.
