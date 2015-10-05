@@ -31,16 +31,20 @@ this works. You may also want to look
 [here](http://stevenskelton.ca/files/2013/12/Real-Time-Data-Mining-With-Spark.scala)
 and [here](http://stevenskelton.ca/real-time-data-mining-spark/) to get a
 better grasp of what this code does.
+Because some of the xml is malformatted, you may need to wrap the parsing in
+a `try/catch` statement.
 
 You'll notice that the parsing code (in eg. User.scala) asserts the existence
 of a xml file - you can remove this requirement to let the code work with
 chunked data.
+You should also remove the reference to File in StackTable if you do this.
 
 The Main.scala file framework can be modified. Here's a place to start - the
 input and output directory arguments are important for running the automated
 EMR script.
 ```scala
 object Main {
+  def main(args: Array[String]) {
     val inputDir = args(0)
     val outputDir = args(1)
     val minSplits = 4
