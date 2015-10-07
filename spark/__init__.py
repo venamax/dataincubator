@@ -20,15 +20,15 @@ def user_reputation_by_tenure():
     return [(118, 3736.5)] * 100
 
 @fellow.app.task(name="spark.quick_answers_by_hour")
-@typecheck.returns("24 * count")
+@typecheck.returns("24 * number")
 def quick_answers_by_hour():
-    return [0] * 24
+    return [0.] * 24
 
 
 @fellow.app.task(name="spark.quick_answers_by_hour_full")
-@typecheck.returns("24 * count")
+@typecheck.returns("24 * number")
 def quick_answers_by_hour_full():
-    return [0] * 24
+    return [0.] * 24
 
 keys = ["vet_views", "vet_score", "vet_favorites", "vet_answers",
         "brief_views", "brief_score", "brief_favorites", "brief_answers"]
