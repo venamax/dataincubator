@@ -17,9 +17,8 @@ Your development cycle should be:
 
   1. Get your job to work locally on one chunk.  This will greatly speed up your
 development.
-  2. Get your job to work locally on the full dataset you downloaded.
-  3. Get your job to work on EMR for all of english wikipedia.
-(Only for entropy and link stats)
+  2. Get your job to work locally on the full dataset.
+  3. Submit entropy and link stats english on EMR.
 
 By default, mrjob (when run on EMR) only uploads the mrjob python file and no
 supporting libraries.
