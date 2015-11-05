@@ -60,3 +60,8 @@ def identify_veterans_from_first_post_stats_full():
       "brief_favorites": 0.,
       "brief_answers": 0.
     }
+
+@fellow.app.task(name="spark.word2vec")
+@typecheck.returns("25 * (string, number)")
+def word2vec():
+    return [("dataframe", 0.6188562703887146)] * 25

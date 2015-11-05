@@ -1,5 +1,5 @@
 The city of New York does restaurant inspections and assigns a grade.
-Inspections data the last 4 years are available
+Inspections data for the last 4 years are available
 [here](https://s3.amazonaws.com/thedataincubator/coursedata/nyc_inspection_data.zip).
 
 The file `RI_Webextract_BigApps_Latest.xls` contains a description of each of
@@ -47,9 +47,10 @@ are, the easier it is on the grader.
 ## score_by_zipcode
 Return a list of tuples of the form:
 ```
-(zipcode, mean score, standard error, number of violations)
+(zipcode, mean score, standard error, number of restaurants)
 ```
-for each of the 184 zipcodes in the city with over 100 violations. Sort the
+for each of the 92 zipcodes in the city with over 100 restaurants. Use the
+latest inspection for each restaurant to calculate the score. Sort the
 list in ascending order by mean score. You can read more about standard error
 on [wikipedia](http://en.wikipedia.org/wiki/Standard_error).
 
@@ -57,15 +58,11 @@ on [wikipedia](http://en.wikipedia.org/wiki/Standard_error).
 *means* in this dataset. Think about what we're actually calculating - 
 does it represent what we're trying to understand about these zipcodes?
 
-In other words, what is the difference between the question we're trying
-to answer with this analysis intuitively and the question we're actually
-answering?
-
-If we were to do a different calculation, what biases would we run into?
-How should we deal with this kind of situation as data scientists? 
+What if we use the average of a restaurant's inspections instead of the latest?
 
 **Checkpoint**
-Total entries in valid zipcodes: 531,126
+Total unique restaurants: 25,232
+Total restaurants in valid zipcodes: 20,349
 
 ## score_by_map
 The above are not terribly enlightening.  Use [CartoDB](http://cartodb.com/)
@@ -83,23 +80,23 @@ Liberty), Financial District, Chinatown, and Coney Island fare?
 ## score_by_borough
 Return a list of tuples of the form:
     ```
-    (borough, mean score, stderr, number of violations)
+    (borough, mean score, stderr, number of restaurants)
     ```
 for each of the city's five boroughs. Sort the list in ascending order by grade.
 
 **Hint**: you will have to perform a join with the `boroughs` table.
 
 **Checkpoint**
-Total entries in valid boroughs: 531,832
+Total restaurants in valid boroughs: 25,220
 
 ## score_by_cuisine
 Return a list of the 75 tuples of the form
     ```
-    (cuisine, mean score, stderr, number of violations)
+    (cuisine, mean score, stderr, number of reports)
     ```
-for each of the 75 cuisine types with at least 100 inspections. Sort the list 
-in ascending order by score. Are the least sanitary and most sanitary cuisine
-types surprising?
+for each of the 75 cuisine types with at least 100 violation reports. Sort the
+list in ascending order by score. Are the least sanitary and most sanitary
+cuisine types surprising?
 
 **Note:** It's interesting to think again about what this analysis is trying
 to say and how it differs from the analysis by zipcode. How should this

@@ -3,10 +3,9 @@ import fellow
 import typecheck
 
 @fellow.app.task(name="sql.score_by_zipcode")
-@typecheck.returns("184 * (string, number, number, count)")
+@typecheck.returns("92 * (string, number, number, count)")
 def score_by_zipcode():
-    return [("11201", 20.3753782668501, 0.179295745965114, 7270)] * 184
-
+    return [("11201", 9.81739130434783, 0.394278849322024, 345)] * 184
 
 @fellow.app.task(name="sql.score_by_map")
 @typecheck.returns("string")
@@ -17,7 +16,7 @@ def score_by_map():
 @fellow.app.task(name="sql.score_by_borough")
 @typecheck.returns("5 * (string, number, number, count)")
 def score_by_borough():
-    return [("MANHATTAN", 20.9020950048566, 0.0332666179191432, 217231)] * 5
+    return [("MANHATTAN", 10.7269875502402, 0.0798259390597376, 10201)] * 5
 
 @fellow.app.task(name="sql.score_by_cuisine")
 @typecheck.returns("75 * (string, number, number, count)")

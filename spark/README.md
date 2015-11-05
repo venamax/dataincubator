@@ -17,8 +17,24 @@ A full schema can be found
 [here](https://ia801500.us.archive.org/8/items/stackexchange/readme.txt) which
 originates from [this](https://archive.org/details/stackexchange).
 
+## Using PySpark
 
-## Spark Overflow
+You will need to handle xml parsing yourself using something like
+[ElementTree](https://docs.python.org/2/library/xml.etree.elementtree.html).
+
+If you would like to create class definitions they need to be written in a
+separate file and then included at runtime (see example below).
+
+To make your code more flexible, it's also recommended to handle command-line
+arguments that specify the location of the input data and where output
+should be written.
+
+### PySpark Workflow
+1. Edit source code in your main.py file, classes in a separate classes.py
+2. Run locally using eg.
+`$SPARK_HOME/bin/spark-submit --py-files src/classes.py src/main.py data/stats results/stats/`
+
+## Using Scala and Spark Overflow
 
 We'll use some open-source code (you'll need to clone [this
 repo](https://github.com/stevenrskelton/SparkOverflow)) to handle the
@@ -71,14 +87,13 @@ libraryDependencies += "org.apache.spark" %% "spark-core" % "1.2.0"
 The files "project/build.sbt", ".project", and ".classpath" should not be
 necessary.
 
-## Workflow
+### Scala Workflow
 1. edit source code in Main.scala
 2. run the command `sbt package` from the root directory of the project
 3. use
    [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html)
    locally: this means adding a flag like --master local[2] to the spark-submit
    command.
-4. use the create_spark_cluster script to run spark-submit on EMR
 
 ## Tips
 1. It makes sense to do your development on some subset of the entire dataset
@@ -91,7 +106,8 @@ necessary.
 3. Try `cat output_dir/* | sort -n -t , -k 1.2 -o sorted_output` to concatenate
    the various part-xxxxx files.
 4. You can access an interactive Spark/Scala REPL with `$SPARK_HOME/bin/spark-shell`.
-5. Dates are parsed by default using the Long data type and unix time (epoch time).
+5. You can access an interactive PySpark shell with `$SPARK_HOME/bin/pyspark`.
+6. Dates are parsed by default using the Long data type and unix time (epoch time).
    In Java/Scala, a given timestamp represents the number of milliseconds since 1970-01-01T00:00:00Z.
    Also be wary of integer overflow when dealing with Longs. For example, these two are not equal:
    val year: Long = 365 * 24 * 60 * 60 * 1000
@@ -208,3 +224,15 @@ Same thing on the full StackOverflow dataset.
 **Checkpoint**
 Total brief users: 1,848,628
 Total veteran users: 288,285
+
+## word2vec
+[Word2Vec](https://code.google.com/p/word2vec/) is an alternative approach for
+vectorizing text data. The vectorized representations of words in the
+vocabulary tend to be useful for predicting other words in the document,
+hence the famous example "vector('king') - vector('man') + vector('woman')
+~= vector('queen')".
+
+Let's see how good a Word2Vec model we can train using the tags of each
+StackOverflow post as documents. Use Spark ML's implementation of Word2Vec to
+return a list of the top 25 closest synonyms to "ggplot2" and their similarity
+score in tuple format ("string", number). 
