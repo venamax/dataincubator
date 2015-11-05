@@ -3,11 +3,7 @@ We are going to be running mapreduce jobs on the wikipedia dataset.  The
 dataset is available (pre-chunked) on
 [s3](s3://thedataincubator-course/mrdata/simple/).
 
-To solve this, you will need to run mrjob on AWS EMR. Because of resource constraints, we
-highly recommend running most of your code locally using the data stored on S3.
-Only two questions require the use of AWS due to the size of the input/computation time.
 For development, you can even use a single chunk:
-
 ```
 wget https://s3.amazonaws.com/thedataincubator-course/mrdata/simple/part-00026.xml.bz2
 ```
@@ -18,24 +14,8 @@ Your development cycle should be:
   1. Get your job to work locally on one chunk.  This will greatly speed up your
 development.
   2. Get your job to work locally on the full dataset.
-  3. Submit entropy and link stats english on EMR.
 
-By default, mrjob (when run on EMR) only uploads the mrjob python file and no
-supporting libraries.
-
-  1. You can always import members of the standard library as they come with
-  any python distribution.
-  2. EMR comes with `numpy`, `lxml` and a couple of other python libraries. Be
-     warned though, they are probably different versions than you have.
-  3. If you wish to include code from other local python files, use [tar them
-     up](https://pythonhosted.org/mrjob/guides/setup-cookbook.html#running-a-makefile-inside-your-source-dir))
-     to upload them to EMR.
-
-*Warning*: EMR has rather old software installed (e.g. `python 2.6` instead of
-2.7, `numpy 1.4` instead of 1.9. Make sure your code runs on these older
-libraries before uploading jobs.
-
-Finally, if you want to structure your mrjob code well, you will want to have
+If you want to structure your mrjob code well, you will want to have
 multiple mrjobs in a single module.  As a matter of good style, we recommend
 that you write each separate mapreduce as it's own class.  Then write a wrapper
 module that defines the logic for combining steps.  You can combine multiple
@@ -58,9 +38,9 @@ probably doing it wrong.  For example, mapreduce jobs for
 (including generous blank lines and biolerplate code)
 
 # Submission                                                                                                                                                                                                 
-Replace the default values in `__init__.py` with your answers. Avoid running                                                                                                                                 
-"on-the-fly" computations or scripts in this file. Ideally it should be a                                                                                                                                    
-static list which you paste in or load from file. The less moving parts there                                                                                                                                
+Replace the default values in `__init__.py` with your answers. Avoid running
+"on-the-fly" computations or scripts in this file. Ideally it should be a
+static list which you paste in or load from file. The less moving parts there
 are, the easier it is on the grader.
 
 # Questions
@@ -110,9 +90,6 @@ You will need to write this as two map reduces:
      three mapper functions can pass state through `self`, e.g. `self.heap`.
      Remember that to pass state between the map and reduce phase, you will
      have to use `yield` in the mapper and read each line in the reducer.
-
-3. When you have the top 100 words and their count, simply download the results
-   (using aws cli) and copy and paste the results.
 
 **Checkpoint**
 Total unique words: 1,584,646
@@ -171,10 +148,10 @@ entropy from physics.
 You'll be estimating the Shannon entropy of different Simple English and Thai
 based off of their Wikipedias. Do this with n-grams of characters, by first
 calculating the entropy of a single n-gram and then dividing by n to get the
-per-character entropy. Use n-grams of size 1, 2, 3, 4, 5, 10 and 15.  How
-should our per-character entropy estimates vary based off of n?  How should
-they vary by the size of the corpus? How much data would we need to get
-reasonable entropy estimates for each n?
+per-character entropy. Use n-grams of size 1, 2, 3.  How should our
+per-character entropy estimates vary based off of n?  How should they vary by
+the size of the corpus? How much data would we need to get reasonable entropy
+estimates for each n?
 
 The data you need is available at:
     - https://s3.amazonaws.com/thedataincubator-course/mrdata/simple/part-000*
@@ -241,6 +218,11 @@ The same thing but for all of English Wikipedia.  This is the real test of how
 well your algorithm scales!  The data is also located on
 [s3](s3://thedataincubator-course/mrdata/english/).
 
+**Note**
+Because of the size of the dataset, this job may take several hours to complete.
+It's advisable to run it overnight once you're reasonably sure it will work
+(due to testing the code on smaller inputs).
+
 ## double_link_stats_simple
 Instead of analyzing single links, let's look at double links.  That is, pages
 A and C that are connected through many pages B where there is a link 
@@ -284,6 +266,3 @@ notion that the articles `A` and `C` refer to tightly related concepts.
 Don't be afraid if these answers are not particularly insightful.  Simple
 Wikipedia is not as rich as English Wikipedia.  However, you should notice that
 the articles are closely related conceptually.
-
-**Checkpoint**
-Total unique links: 77,320,731
