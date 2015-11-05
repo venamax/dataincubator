@@ -5,7 +5,7 @@ import typecheck
 @fellow.app.task(name="sql.score_by_zipcode")
 @typecheck.returns("92 * (string, number, number, count)")
 def score_by_zipcode():
-    return [("11201", 9.81739130434783, 0.394278849322024, 345)] * 184
+    return [("11201", 9.81739130434783, 0.394278849322024, 345)] * 92
 
 @fellow.app.task(name="sql.score_by_map")
 @typecheck.returns("string")
