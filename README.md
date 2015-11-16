@@ -49,7 +49,7 @@ lessons, first!)
    to make sure you return the right output format.
 
 6. Finally, `git add` and `git commit` your solution, then run
-   `submit.sh` to submit your answer. You should get a
+   `git push grader master` to submit your answer. You should get a
    bunch of output from the grader, along with your grade. You should
    also login to your dashboard - check the gradebook linked there to
    confirm that your grade is being recorded correctly.
