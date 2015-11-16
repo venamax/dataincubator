@@ -5,4 +5,4 @@ import typecheck
 @typecheck.test_cases(x=[1, 2], y=[5, 6.0])
 @typecheck.returns("number")
 def add(x, y):
-    return 0
+    return x + y
