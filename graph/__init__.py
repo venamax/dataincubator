@@ -4,7 +4,7 @@ import typecheck
 @fellow.app.task(name="graph.degree")
 @typecheck.returns("100 * (string, count)")
 def degree():
-    return [('Alec Baldwin', 82)] * 100
+    return [('Alec Baldwin', 144)] * 100
 
 @fellow.app.task(name="graph.pagerank")
 @typecheck.returns("100 * (string, number)")
