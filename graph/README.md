@@ -96,8 +96,8 @@ are, the easier it is on the grader.
 # Questions
 
 **Checkpoint**
-Total number of unique names found: 113,031
-Total number of unique, non-reflexive pairs found: 196,245
+Total number of names found: 113,031
+Total number of non-reflexive pairs found: 196,245
 Total number of raw captions: 113,325
 Total number of valid captions: 102,736
 
@@ -113,13 +113,13 @@ weight 2, it counts for 2 in the degree.
 **Checkpoint**
 Top 100 .describe()
 "count": 100.0
-"mean": 109.96
-"std": 52.4777817343
-"min": 71.0
-"25%": 79.75
-"50%": 91.0
-"75%": 120.25
-"max": 373.0
+"mean": 189.92
+"std": 87.8053034454
+"min": 124.0
+"25%": 138.0
+"50%": 157.0
+"75%": 195.0
+"max": 666.0
 
 ## 2. pagerank
 A similar way to determine popularity is to look at their
