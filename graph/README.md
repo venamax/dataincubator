@@ -24,12 +24,11 @@ to see a list of (party) pages.  For each party's page, grab all the captions.
   3. Some captions are not useful: they contain long narrative texts that
      explain the event.  Usually in two stage processes like this, it is better
      to keep more data in the first stage and then filter it out in the second
-     stage.  This makes your work more reproducible.  It's usually faster to
-     download more data than you need now than to have to redownload more data
-     later.
+     stage.  It's usually faster download more data than you need now than to
+     have to redownload more data later.
   4. To avoid having to re-scrape every time you run your code, you can
-	 consider saving the data to disk, and having the parsing code load a file.
-	 A checkpoint library like
+     consider saving the data to disk, and having the parsing code load a file.
+     A checkpoint library like
 	 [ediblepickle](https://pypi.python.org/pypi/ediblepickle/1.1.3) can
      streamline the process so that the time-consuming code will only be run
      when necessary.
