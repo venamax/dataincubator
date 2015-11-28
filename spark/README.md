@@ -1,9 +1,11 @@
 # Overview
 
-StackOverflow is a collaboratively edited question-and-answer site generally
+StackOverflow is a collaboratively edited question-and-answer site originally
 focused on programming topics. Because of the variety of features tracked,
 including a variety of feedback metrics, it allows for some open-ended analysis
 of user behavior on the site.
+
+## Accessing the data
 
 The data is available on [S3](s3://thedataincubator-course/spark-stack-data/)
 There are three subfolders: allUsers, allPosts, and allVotes which contain
@@ -17,102 +19,67 @@ A full schema can be found
 [here](https://ia801500.us.archive.org/8/items/stackexchange/readme.txt) which
 originates from [this](https://archive.org/details/stackexchange).
 
-## Using PySpark
+## Parsing the data
 
 You will need to handle xml parsing yourself using something like
-[ElementTree](https://docs.python.org/2/library/xml.etree.elementtree.html).
-
-If you would like to create class definitions they need to be written in a
-separate file and then included at runtime (see example below).
+[ElementTree](https://docs.python.org/2/library/xml.etree.elementtree.html) in
+PySpark or the built in \ selector in Scala.
 
 To make your code more flexible, it's also recommended to handle command-line
 arguments that specify the location of the input data and where output
 should be written.
 
-### PySpark Workflow
+The goal should be to have a parsing function that can be applied to the input
+data to access any XML element desired. It is suggested to use a class
+structure so that you can create RDDs of Posts, Votes, Users, etc.
+
+### PySpark workflow
+Class definitions need to be written in a separate file and then included
+at runtime.
+
 1. Edit source code in your main.py file, classes in a separate classes.py
 2. Run locally using eg.
 `$SPARK_HOME/bin/spark-submit --py-files src/classes.py src/main.py data/stats results/stats/`
 
-## Using Scala and Spark Overflow
+### Scala workflow
+1. Edit source code in Main.scala
+2. Run the command `sbt package` from the root directory of the project
+3. Use
+   [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html)
+   locally: this means adding a flag like --master local[2] to the spark-submit
+   command.
 
-We'll use some open-source code (you'll need to clone [this
-repo](https://github.com/stevenrskelton/SparkOverflow)) to handle the
-integration of the StackOverflow xml into Scala.
-
-The scala files in the SparkOverflow project will parse the XML for you,
-allowing you to pull out tags by writing `x.creationDate`. Look through
-the scala parsing source code (eg. StackTable.scala, Post.scala) to see how
-this works. You may also want to look
-[here](http://stevenskelton.ca/files/2013/12/Real-Time-Data-Mining-With-Spark.scala)
-and [here](http://stevenskelton.ca/real-time-data-mining-spark/) to get a
-better grasp of what this code does.
-Because some of the xml is malformatted, you may need to wrap the parsing in
-a `try/catch` statement.
-
-You'll notice that the parsing code (in eg. User.scala) asserts the existence
-of a xml file - you can remove this requirement to let the code work with
-chunked data.
-You should also remove the reference to File in StackTable if you do this.
-
-The Main.scala file framework can be modified. Here's a place to start - the
-input and output directory arguments are important for running the automated
-EMR script.
+### Tips
+1. You may pass arguments into your code by wrapping it in a main function, eg.:
 ```scala
 object Main {
   def main(args: Array[String]) {
     val inputDir = args(0)
     val outputDir = args(1)
-    val minSplits = 4
-
-    System.setProperty("spark.executor.memory", "5g")
-    System.setProperty("spark.rdd.compress", "true")
-
-    println("Spark starting.")
-
-    val conf = new SparkConf().setAppName("Main")
-    conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
-        .set("spark.default.parallelism", "12")
-        .set("spark.hadoop.validateOutputSpecs", "false")
-    conf.registerKryoClasses(Array(classOf[Post], classOf[User], classOf[Vote]))
-
-    val sc = new SparkContext(conf)
 ```
 
-It is also important to have this line in your build.sbt - the other
-dependences in there by default are not necessary for this project.
+Or in Python, using sysv or argparse:
+```python
+if __name__ == '__main__':
+  main(ARGS.input_dir, ARGS.output_dir)
+```
 
-libraryDependencies += "org.apache.spark" %% "spark-core" % "1.2.0"
-
-The files "project/build.sbt", ".project", and ".classpath" should not be
-necessary.
-
-### Scala Workflow
-1. edit source code in Main.scala
-2. run the command `sbt package` from the root directory of the project
-3. use
-   [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html)
-   locally: this means adding a flag like --master local[2] to the spark-submit
-   command.
-
-## Tips
-1. It makes sense to do your development on some subset of the entire dataset
+2. It makes sense to do your development on some subset of the entire dataset
    for the sake of expediency. Data from the much smaller
    stats.stackexchange.com is available in the same format on
    [S3](s3://thedataincubator-course/spark-stats-data/)
-2. SBT has some nice features, for example [Continuous build and
+3. SBT has some nice features, for example [Continuous build and
    test](http://www.scala-sbt.org/0.12.4/docs/Getting-Started/Running.html#continuous-build-and-test),
    which can greatly speed up your development.
-3. Try `cat output_dir/* | sort -n -t , -k 1.2 -o sorted_output` to concatenate
+4. Try `cat output_dir/* | sort -n -t , -k 1.2 -o sorted_output` to concatenate
    the various part-xxxxx files.
-4. You can access an interactive Spark/Scala REPL with `$SPARK_HOME/bin/spark-shell`.
-5. You can access an interactive PySpark shell with `$SPARK_HOME/bin/pyspark`.
-6. Dates are parsed by default using the Long data type and unix time (epoch time).
+5. You can access an interactive Spark/Scala REPL with `$SPARK_HOME/bin/spark-shell`.
+6. You can access an interactive PySpark shell with `$SPARK_HOME/bin/pyspark`.
+7. Dates are parsed by default using the Long data type and unix time (epoch time).
    In Java/Scala, a given timestamp represents the number of milliseconds since 1970-01-01T00:00:00Z.
    Also be wary of integer overflow when dealing with Longs. For example, these two are not equal:
    val year: Long = 365 * 24 * 60 * 60 * 1000
    val year: Long = 365 * 24 * 60 * 60 * 1000L
-
 
 *Question:* What are the circumstances that make Spark a favorable/unfavorable approach here?
 
@@ -235,4 +202,11 @@ hence the famous example "vector('king') - vector('man') + vector('woman')
 Let's see how good a Word2Vec model we can train using the tags of each
 StackOverflow post as documents. Use Spark ML's implementation of Word2Vec to
 return a list of the top 25 closest synonyms to "ggplot2" and their similarity
-score in tuple format ("string", number). 
+score in tuple format ("string", number).
+
+## K-means (ungraded)
+From your trained Word2Vec model, pass the vectors into a K-means clustering
+algorithm. Create a plot of the sum of squared error by calculating the
+square root of the sum of the squared distances for each point and its assigned
+cluster. For an independent variable use either the number of clusters k or
+the dimension of the Word2Vec vectorization.
