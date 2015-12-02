@@ -72,7 +72,7 @@ if __name__ == '__main__':
    test](http://www.scala-sbt.org/0.12.4/docs/Getting-Started/Running.html#continuous-build-and-test),
    which can greatly speed up your development.
 4. Try `cat output_dir/* | sort -n -t , -k 1.2 -o sorted_output` to concatenate
-   the various part-xxxxx files.
+   your output files, which will also be in part-xxxxx format.
 5. You can access an interactive Spark/Scala REPL with `$SPARK_HOME/bin/spark-shell`.
 6. You can access an interactive PySpark shell with `$SPARK_HOME/bin/pyspark`.
 7. Dates are parsed by default using the Long data type and unix time (epoch time).
