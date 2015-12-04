@@ -22,6 +22,11 @@ module that defines the logic for combining steps.  You can combine multiple
 steps by overriding the [steps
 method](https://pythonhosted.org/mrjob/guides/writing-mrjobs.html#multi-step-jobs).
 
+You can run jobs on full datasets as follows (using simple as an example):
+```
+python mrjob.py -r hadoop job_file.py s3n://thedataincubator-course/mrdata/simple/
+```
+
 Here are some helpful articles on how mrjob works and how to pass parameters to
 your script:
   - [How mrjob is
