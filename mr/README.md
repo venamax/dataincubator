@@ -50,7 +50,7 @@ Return a list of the top 100 words in article text (in no particular order).
 You will need to write this as two map reduces:
 
 1. The first job is similar to standard wordcount but with a few tweaks. 
-   The data provided for wikipedia is in in *.xml.bz2 format.  Mrjob will
+   The data provided for wikipedia is in in \*.xml.bz2 format.  Mrjob will
    automatically decompress bz2.  We'll deal with the xml in the next question.
    For now, just treat it as text.  A few hints:
    - To split the words, use the regular expression "\w+".
@@ -154,11 +154,12 @@ the size of the corpus? How much data would we need to get reasonable entropy
 estimates for each n?
 
 The data you need is available at:
-    - https://s3.amazonaws.com/thedataincubator-course/mrdata/simple/part-000*
-    - https://s3.amazonaws.com/thedataincubator-course/mrdata/thai/part-000*
+    - https://s3.amazonaws.com/thedataincubator-course/mrdata/simple/part-000\*
+    - https://s3.amazonaws.com/thedataincubator-course/mrdata/thai/part-000\*
 
 *Question*: Why do we need to use map-reduce? There are >300 million characters
-in this dataset. How much memory would it take to store all 15-grams?
+in this dataset. How much memory would it take to store all `n`-grams as `n`
+increases?
 
 Notes:
 - Characters are case sensitive.
@@ -222,6 +223,8 @@ well your algorithm scales!  The data is also located on
 Because of the size of the dataset, this job may take several hours to complete.
 It's advisable to run it overnight once you're reasonably sure it will work
 (due to testing the code on smaller inputs).
+
+As a barometer, our reference solution takes around 5 hours to run.
 
 ## double_link_stats_simple
 Instead of analyzing single links, let's look at double links.  That is, pages
