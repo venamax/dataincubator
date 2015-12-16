@@ -11,7 +11,7 @@ def score_by_zipcode():
 @typecheck.returns("string")
 def score_by_map():
     # must be url starting with cdb.io
-    return "http://www.cartodb.com"
+    return "http://cartodb.com"
 
 @fellow.app.task(name="sql.score_by_borough")
 @typecheck.returns("5 * (string, number, number, count)")
