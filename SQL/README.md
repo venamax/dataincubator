@@ -71,8 +71,7 @@ trial.
 
 You will have to use their wizard to plot the data by
 [zipcode](http://docs.cartodb.com/cartodb-editor.html#geocoding-data).  Then
-use the "share" button to return a link to a short URL beginning with
-"http://cdb.io/".
+use the "share" button to return a link of the form https://x.cartodb.com/...
 
 **For fun:** How do JFK, Brighton Beach, Liberty Island (home of the Statue of
 Liberty), Financial District, Chinatown, and Coney Island fare?
