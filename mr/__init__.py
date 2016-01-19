@@ -1,4 +1,3 @@
-
 import typecheck
 import fellow
 
@@ -32,7 +31,7 @@ def wikipedia_entropy():
             "simple3": 1.,
             "thai1": 1.,
             "thai2": 1.,
-            "thai3": 1.} 
+            "thai3": 1.}
 
 keys = ["count", "mean", "stdev", "5%", "25%", "median", "75%", "95%"]
 @fellow.app.task(name="mr.link_stats_simple")

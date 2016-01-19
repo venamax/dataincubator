@@ -48,6 +48,16 @@ def passes_typecheck(task):
     return True
 
 if __name__ == "__main__":
+    print("Running Flake8...")
+    args = [sys.executable, "-m", "flake8",
+            "--exclude=._*", "--filename=*.py", "."]
+    try:
+        subprocess.check_call(args)
+    except subprocess.CalledProcessError as e:
+        print("-" * 80)
+        print("Flake8 failed. Please clean up your Python code.")
+        raise
+    print("Validating tasks...")
     failed = False
     for name, task in fellow.app.tasks.items():
         if name.startswith("celery.") or task.run.__annotations__ is None:
@@ -58,13 +68,8 @@ if __name__ == "__main__":
         else:
             print(".", end="")
 
-    # Run flake8 for linting
-    args = [sys.executable, "-m", "flake8"]
-    status = subprocess.call(args)
-    assert status == 0
-
     if failed:
-        print("Validation Failed")
+        print("Validation failed!")
         sys.exit(1)
     else:
-        print("Passed Validation")
+        print("Passed validation!")

@@ -1,3 +1,4 @@
+# flake8: noqa
 
 test_json = [
     {"votes": {"funny": 0, "useful": 0, "cool": 0}, "user_id": "WsGQfLLy3YlP_S9jBE3j1w", "review_id": "kzFlI35hkmYA_vPSsMcNoQ", "stars": 5, "date": "2012-11-03", "text": "Love it!!!!! Love it!!!!!! love it!!!!!!!   Who doesn't love Culver's!", "type": "review", "business_id": "LRKJF43s9-3jG9Lgx4zODg"},

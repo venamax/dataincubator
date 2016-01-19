@@ -35,30 +35,28 @@ keys = ["vet_views", "vet_score", "vet_favorites", "vet_answers",
 @fellow.app.task(name="spark.identify_veterans_from_first_post_stats")
 @typecheck.returns_dict("number", keys)
 def identify_veterans_from_first_post_stats():
-    return {
-      "vet_views": 0.,
-      "vet_score": 0.,
-      "vet_favorites": 0.,
-      "vet_answers": 0.,
-      "brief_views": 0.,
-      "brief_score": 0.,
-      "brief_favorites": 0.,
-      "brief_answers": 0.
-    }
+    return {"vet_views": 0.,
+            "vet_score": 0.,
+            "vet_favorites": 0.,
+            "vet_answers": 0.,
+            "brief_views": 0.,
+            "brief_score": 0.,
+            "brief_favorites": 0.,
+            "brief_answers": 0.
+            }
 
 @fellow.app.task(name="spark.identify_veterans_from_first_post_stats_full")
 @typecheck.returns_dict("number", keys)
 def identify_veterans_from_first_post_stats_full():
-    return {
-      "vet_views": 0.,
-      "vet_score": 0.,
-      "vet_favorites": 0.,
-      "vet_answers": 0.,
-      "brief_views": 0.,
-      "brief_score": 0.,
-      "brief_favorites": 0.,
-      "brief_answers": 0.
-    }
+    return {"vet_views": 0.,
+            "vet_score": 0.,
+            "vet_favorites": 0.,
+            "vet_answers": 0.,
+            "brief_views": 0.,
+            "brief_score": 0.,
+            "brief_favorites": 0.,
+            "brief_answers": 0.
+            }
 
 @fellow.app.task(name="spark.word2vec")
 @typecheck.returns("25 * (string, number)")
