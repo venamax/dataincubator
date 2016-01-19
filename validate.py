@@ -1,6 +1,7 @@
 from __future__ import print_function
 import json
 import sys
+import subprocess
 
 import jsonschema
 import toolz
@@ -56,6 +57,11 @@ if __name__ == "__main__":
             failed = True
         else:
             print(".", end="")
+
+    # Run flake8 for linting
+    args = [sys.executable, "-m", "flake8"]
+    status = subprocess.call(args)
+    assert status == 0
 
     if failed:
         print("Validation Failed")

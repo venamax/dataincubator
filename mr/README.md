@@ -24,8 +24,10 @@ method](https://pythonhosted.org/mrjob/guides/writing-mrjobs.html#multi-step-job
 
 You can run jobs on full datasets as follows (using simple as an example):
 ```
-python mrjob.py -r hadoop job_file.py s3n://thedataincubator-course/mrdata/simple/
+python job_file.py -r hadoop s3n://thedataincubator-course/mrdata/simple/
 ```
+You can also pass an entire local directory of data (eg. `data/simple/`) as
+the input.
 
 Here are some helpful articles on how mrjob works and how to pass parameters to
 your script:
