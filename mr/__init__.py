@@ -20,7 +20,7 @@ def top100_words_simple_no_metadata():
 
 
 languages = ["simple", "thai"]
-ngrams = [1, 2, 3, 4, 5, 10, 15]
+ngrams = [1, 2, 3]
 keys = [language + str(ngram) for language in languages
                               for ngram in ngrams]  # noqa
 
@@ -30,17 +30,9 @@ def wikipedia_entropy():
     return {"simple1": 1.,
             "simple2": 1.,
             "simple3": 1.,
-            "simple4": 1.,
-            "simple5": 1.,
-            "simple10": 1.,
-            "simple15": 1.,
             "thai1": 1.,
             "thai2": 1.,
-            "thai3": 1.,
-            "thai4": 1.,
-            "thai5": 1.,
-            "thai10": 1.,
-            "thai15": 1.}
+            "thai3": 1.} 
 
 keys = ["count", "mean", "stdev", "5%", "25%", "median", "75%", "95%"]
 @fellow.app.task(name="mr.link_stats_simple")
