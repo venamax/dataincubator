@@ -48,7 +48,7 @@ def link_stats_simple():
 
 @fellow.app.task(name="mr.link_stats_english")
 @typecheck.returns_dict("number", keys)
-def link_sstats_english():
+def link_stats_english():
     return {"count": 0.,
             "mean": 0.,
             "stdev": 0.,
