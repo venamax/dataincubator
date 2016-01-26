@@ -15,12 +15,13 @@ The data is available at:
 
 
 ## Helpful notes:
-- You may run into trouble with the size of your models and Heroku's memory
-  limit.  This is a major concern in real-world applications.  Your production
-  environment will likely not be that different from Heroku and being able to
-  deploy there is important and companies don't want to hire data scientists
-  who cannot cope with this.  Think about what information the different stages
-  of your pipeline need and how you can reduce the memory footprint.
+- You may run into trouble with the size of your models and Digital Ocean's
+  memory limit. This is a major concern in real-world applications. Your
+  production environment will likely not be that different from Digital Ocean
+  and being able to deploy there is important and companies don't want to hire
+  data scientists who cannot cope with this. Think about what information the
+  different stages of your pipeline need and how you can reduce the memory
+  footprint.
 - For example, submitting entire GridSearchCV objects will not work reliably
   depending on the size of your models. If you use GridSearchCV, consult the
   documentation to find the attributes that allow you to extract the best
