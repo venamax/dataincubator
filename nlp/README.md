@@ -153,10 +153,10 @@ $w_1 w_2$ where the statistic
 is high.  Return the top 100 (mostly food) bigrams with this statistic with
 the 'right' prior factor (see below).
 
-*Questions:* (to think about: they are not a part of the answer).  This
-statistic is a ratio and problematic when the denominator is small.  We can fix
-this by applying Bayesian smoothing to $p(w)$ (i.e. mixing the empirical
-distribution with the uniform distribution over the vocabulary).
+*Questions:* This statistic is a ratio and problematic when the denominator
+is small.  We can fix this by applying Bayesian smoothing to $p(w)$
+(i.e. mixing the empirical distribution with the uniform distribution over
+the vocabulary).
 
 1. How does changing this smoothing parameter effect the word pairs you get
    qualitatively?
