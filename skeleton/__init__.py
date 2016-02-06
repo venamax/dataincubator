@@ -1,3 +1,5 @@
+# flake8: noqa
+# This file should pass flake8 in production, be sure to remove the above.
 """
 This file is where fellows input their answers.
 * Task names should match README
