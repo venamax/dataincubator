@@ -146,6 +146,10 @@ accepted answers when question hour is 15).
 Return a list, whose ith element correspond to ith hour (e.g. 0 -> midnight, 1
 -> 1:00, etc.)
 
+**Note** When using the SimpleDateFormat class, it's important to account for
+your machine's local time zone - our policy will be to use GMT eg:
+`hourFormat.setTimeZone(TimeZone.getTimeZone("GMT"))`
+
 Question: What biases are present in our result, that we don't account for? How
 would we handle this?
 
