@@ -61,4 +61,4 @@ def identify_veterans_from_first_post_stats_full():
 @fellow.app.task(name="spark.word2vec")
 @typecheck.returns("25 * (string, number)")
 def word2vec():
-    return [("dataframe", 0.6188562703887146)] * 25
+    return [("data.frame", 2.479299366496595)] * 25

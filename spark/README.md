@@ -200,9 +200,14 @@ hence the famous example "vector('king') - vector('man') + vector('woman')
 ~= vector('queen')".
 
 Let's see how good a Word2Vec model we can train using the tags of each
-StackOverflow post as documents. Use Spark ML's implementation of Word2Vec to
-return a list of the top 25 closest synonyms to "ggplot2" and their similarity
-score in tuple format ("string", number).
+StackOverflow post as documents (this uses the full dataset). Use Spark ML's
+implementation of Word2Vec (this will require using DataFrames) to return a
+list of the top 25 closest synonyms to "ggplot2" and their similarity score
+in tuple format ("string", number).
+
+### Parameters
+The dimensionality of the vector space should be 100
+The random seed should be `42L`
 
 ## K-means (ungraded)
 From your trained Word2Vec model, pass the vectors into a K-means clustering
