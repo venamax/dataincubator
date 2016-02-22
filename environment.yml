@@ -127,4 +127,5 @@ dependencies:
   - tables==3.2.0
   - tabulate==0.7.5
   - websocket-client==0.32.0
+  - librosa==0.4.2
 

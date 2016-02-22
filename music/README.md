@@ -1,3 +1,17 @@
+# Questions
+
+## Raw features static genre prediction
+## Spectral features static genre prediction
+## MFCC features static genre prediction
+## All Features + PCA static genre prediction
+## Model on features
+
+Todo:
+- calculate features answer for best model and integrate
+- store model and use on feature data
+
+
+
 # Project Title
 
 Music is a very popular and rich source of information. Our objective is to develop a model that is able to recognize the genre of a musical piece, starting from the raw waveform. This is a typical example of a classification problem on time series data.
