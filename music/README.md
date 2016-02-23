@@ -1,26 +1,12 @@
-# Questions
-
-## Raw features static genre prediction
-## Spectral features static genre prediction
-## MFCC features static genre prediction
-## All Features + PCA static genre prediction
-## Model on features
-
-Todo:
-- calculate features answer for best model and integrate
-- store model and use on feature data
-
-
-
 # Project Title
 
-Music is a very popular and rich source of information. Our objective is to develop a model that is able to recognize the genre of a musical piece, starting from the raw waveform. This is a typical example of a classification problem on time series data.
+From the point of view of data analysis, music offers an extremely rich and interesting playing field. The objective of this miniproject is to develop models that are able to recognize the genre of a musical piece, starting from the raw waveform or from pre-computed features. This is a typical example of a classification problem on time series data.
 
-Your model will be assessed based on the accuracy score of your classifier.  There is a reference solution (which should not be too hard to beat).  The reference solution has a score of 1.
+The model will be assessed based on the accuracy score of your classifier.  There is a reference solution.  The reference solution has a score of 1.
 
 ## Instructions for accessing the data
 
-Data can be found here[here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_train.tar.gz)
+Raw audio files with music pieces can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_train.tar.gz).
 
 The data is organized in 10 folders, one for each genre:
 - blues
@@ -34,130 +20,104 @@ The data is organized in 10 folders, one for each genre:
 - reggae
 - rock
 
-## Hints
+Use the folder name as the genre label you are attempting to predict.
 
-- Extracting features from time series can be time consuming
-- Use MRJob to distribute the feature extraction part of your model when you have lots of features to train on
-- Use PCA when possible
+Raw audio test files can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_test.tar.gz).
+
+These files are randomized and anonymized.
+
+An additional dataset of pre-computed features can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_features_train.tar.gz).
+
+*Hints*
+- All songs are sampled at 22050 Hz.
+- Extracting features from time series can be computationally intensive. Make sure you select which features to calculate wisely.
+- You can use MRJob or PySpark to distribute the feature extraction part of your model
+- Use a dimensionality reduction technique (e.g. PCA) or a feature selection criteria when possible
 - Use GridSearchCV to improve score
-- Think of music data as np array
-
-### Example workflow
-
-### Tips and recommendations
 
 ## Submission instructions
 
-Here is some boilerplate to start with:
-Replace the default values in `__init__.py` with your answers. Avoid running
-"on-the-fly" computations or scripts in the file. The less moving parts there
-are, the easier it is on the grader.
+For the questions involving building a model on raw audio files, you will need to run your model on the test set provided and submit your predictions as a static file. 
+Replace the default values in `__init__.py` with your answers. Avoid running "on-the-fly" computations or scripts in the file. The less moving parts there are, the easier it is on the grader.
 
-For modeling questions include information on pickling and unpickling models.
+For the questions involving building a model on the pre-computed features, you will need to package your model with the solution in the same way as in the ML miniproject.
 
 # Questions
 
 ## Question 1 (these names should match the functions in `__init__.py`)
-## Raw Features Model
-The simplest features that can be extracted from a music time series are the zero crossing rate and the root mean square energy.
+## Raw Features Static Predictions
+The simplest features that can be extracted from a music time series are the [zero crossing rate](https://en.wikipedia.org/wiki/Zero-crossing_rate) and the [root mean square energy](https://en.wikipedia.org/wiki/Root_mean_square).
+
 1) Build a transformer that calculates these two features starting from a raw file input.
-In order to go from a music file of arbitrary length to a fixed set of features you will need to use a sliding window approach, which involves few choices:
-- how large is the window you're going to consider?
+In order to go from a music file of arbitrary length to a fixed set of features you will need to use a sliding window approach, which implies making the following choices:
+- what window size are you going to use?
 - what's the overlap between windows?
-- how do you summarize the values of your features for the whole song? (you could take the mean, or the standard deviation, or the deltas or any other combination).
 
-Your goal is to build a transformer that will output a feature vector that has always the same size, independently of the length of the song clip it receives.
+Besides, you will need to decide how you are going to summarize the values of such features for the whole song. Several strategies are possible:
+-  you could decide to describe their statistics over the whole song by using descriptors like mean, std and higher order moments
+-  you could decide to split the song in sections, calculate statistical descriptors for each section and then average them
+-  you could decide to look at the rate of change of features from one window to the next (deltas).
+-  you could use any combination of the above.
 
-2) Train an estimator that receives the features extracted by the transformer and predicts the genre of a song. You will need to use LabelEncoder in order to 
+Your goal is to build a transformer that will output a "song fingerprint" feature vector that is based on the 2 raw features mentioned above. This vector has to have the same size, regardless of the duration of the song clip it receives.
 
+2) Train an estimator that receives the features extracted by the transformer and predicts the genre of a song.
 
-**Checkpoint**
-Checkpoint 1: x
-Checkpoint 2: y
-Checkpoint 3: z
+Feel free to encode the songs with the following map:
+
+```python
+genremap = {'blues': 0,
+            'classical': 1,
+            'country': 2,
+            'disco': 3,
+            'hiphop': 4,
+            'jazz': 5,
+            'metal': 6,
+            'pop': 7,
+            'reggae': 8,
+            'rock': 9}
+```
+
+or use Scikit-Learn [LabelEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) to generate your own encoding.
+
+Use this pipeline to predict the genres for the 100 files in the `music_test.tar.gz` set and submit your predictions as a static list in the `__init__.py` file.
+
 
 ## Question 2
+## All Features Static Predictions
+The approach of question 1 can be generalized to any number and kind of features extracted from a sliding window. Use the power of the [librosa library](http://bmcfee.github.io/librosa/) to extract features that could better represent the genre content of a musical piece.
+You could use:
+- spectral features to capture the kind of instruments contained in the piece
+- MFCCs to capture the variations in frequencies along the piece
+- Temporal features like tempo and autocorrelation to capture the rythmic information of the piece
+- features based on psychoacoustic scales that emphasize certain frequency bands.
+- wavelet based features
+- any combination of the above
+
+As for question 1, you'll need to summarize the time series containing the features using some sort of aggregation. This could be as simple as statistical descriptors or more involved. Your choice.
+
+As a general rule, build your model gradually. Choose few features that seem interesting, calculate the descriptors and generate predictions.
+
+Make sure you `GridSearchCV` the estimators to find the best combination of parameters.
+
+Use this pipeline to predict the genres for the 100 files in the `music_test.tar.gz` set and submit your predictions as a static list in the `__init__.py` file.
+
+**Question:**
+Does your transformer assume a certain duration for the music piece? If so how could that affect your predictions if you receive longer/shorter pieces?
+
+This model works very well on 1 of the classes. Which one? Why do you think that is?
 
 ## Question 3
+## All Features Model
+The `music_features_train.tar.gz` set contains 549 pre-computed features for the the training set. The last two columns contain the genre and the encoded class label.
 
+Build a pipeline to generate predictions from this featureset. Steps in the pipeline could include:
 
+- a normalization step (not all features have the same size or distribution)
+- a dimensionality reduction or feature selection step
+- ... any other transformer you may find relevant ...
+- an estimator
 
+Use GridSearchCV to find the scikit learn estimator with the best cross-validated performance and sumbit it as a packaged model.
 
-
---------------------------
-
-
-
-The venues belong to different cities.  You can image that the ratings in some
-cities are probably higher than others and use this as an estimator.
-
-Build an estimator that uses `groupby` and `mean` to compute the
-average rating in that city.  Use this as a predictor.
-
-**Question:** In the absence of any information about a city, what score would
-you assign a restaurant in that city?
-
-**Note:** `def city_model` etc. takes an argument `record`.
-
-## lat_long_model
-You can imagine that a city-based model might not be sufficiently fine-grained.
-For example, we know that some neighborhoods are trendier than others.  We
-might consider a K Nearest Neighbors or Random Forest based on the latitude
-longitude as a way to understand neighborhood dynamics.
-
-You should implement a generic `ColumnSelectTransformer` that is passed which
-columns to select in the transformer and use a non-linear model like
-`sklearn.neighbors.KNeighborsRegressor` or
-`sklearn.ensemble.RandomForestRegressor` as the estimator (why would you choose
-a non-linear model?).  Bonus points if you wrap the estimator in
-`grid_search.GridSearchCV` and use cross-validation to determine the optimal
-value of the parameters.
-
-## category_model
-While location is important, we could also try seeing how predictive the
-venues' category. Build a custom transformer that massages the data so that it
-can be fed into a `sklearn.feature_extraction.DictVetorizer` which in turn
-generates a large matrix gotten by One-Hot-Encoding.  Feed this into a Linear
-Regression (and cross validate it!).  Can you beat this with another type of
-non-linear estimator?
-
-*Hints*:
-  - With a large sparse feature set like this, we often use a cross-validated
-    regularized linear model.
-  - Some categories (e.g. Restaurants) are not very specific.  Others (Japanese
-    sushi) are much more so.  How can we account for this in our model (*Hint:*
-    look at TF-IDF).
-
-## attribute_knn_model
-Venues have (potentially nested) attributes:
-```
-    {'Attire': 'casual',
-     'Accepts Credit Cards': True,
-     'Ambience': {'casual': False, 'classy': False}}
-```
-
-Categorical data like this should often be transformed by a One Hot Encoding.
-For example, we might flatten the above into something like this:
-
-```
-    {'Attire_casual' : 1,
-     'Accepts Credit Cards': 1,
-     'Ambience_casual': 0,
-     'Ambience_classy': 0 }
-```
-
-Build a custom transformer that flattens attributes and feed this into
-`DictVectorizer`.  Feed it into a (cross-validated) linear model (or something
-else!)
-
-
-## full_model
-So far we have only built models based on individual features.  We could
-obviously combine them.  One (highly recommended) way to do this is through a
-`sklearn.pipelline.FeatureUnion`.
-
-Combine all the above models using a feature union.  Notice that a feature
-union takes transformers, not models as arguements.  The way around this is to
-build a transformer that outputs the prediction in the transform method, thus
-turning the model into a transformer.  Use a cross-validated linear regression
-(or some other algorithm) to weight these signals.
+Your model should output the correct label in text.
