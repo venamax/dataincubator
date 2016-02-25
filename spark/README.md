@@ -213,6 +213,9 @@ in tuple format ("string", number).
 The dimensionality of the vector space should be 100
 The random seed should be `42L`
 
+**Checkpoint**
+Mean of the top 25 cosine similarities: 2.5444579897502217
+
 ## K-means (ungraded)
 From your trained Word2Vec model, pass the vectors into a K-means clustering
 algorithm. Create a plot of the sum of squared error by calculating the
