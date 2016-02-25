@@ -15,8 +15,18 @@ should score 1%.
 import fellow
 import typecheck
 
-from .data import load_sample_songs
-sample_songs = load_sample_songs()
+
+@fellow.app.task(name="music.raw_features_predictions")
+@typecheck.returns("100 * string")
+def food_bigrams():
+    return ["blues"] * 100
+
+
+
+@fellow.app.task(name="music.all_features_predictions")
+@typecheck.returns("100 * string")
+def food_bigrams():
+    return ["blues"] * 100
 
 @fellow.batch(name="music.raw_features_model")
 @typecheck.test_cases(record=sample_songs)

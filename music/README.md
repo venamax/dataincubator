@@ -45,7 +45,7 @@ For the questions involving building a model on the pre-computed features, you w
 # Questions
 
 ## Question 1 (these names should match the functions in `__init__.py`)
-## Raw Features Static Predictions
+## Raw Features Predictions
 The simplest features that can be extracted from a music time series are the [zero crossing rate](https://en.wikipedia.org/wiki/Zero-crossing_rate) and the [root mean square energy](https://en.wikipedia.org/wiki/Root_mean_square).
 
 1) Build a transformer that calculates these two features starting from a raw file input.
@@ -84,7 +84,7 @@ Use this pipeline to predict the genres for the 100 files in the `music_test.tar
 
 
 ## Question 2
-## All Features Static Predictions
+## All Features Predictions
 The approach of question 1 can be generalized to any number and kind of features extracted from a sliding window. Use the power of the [librosa library](http://bmcfee.github.io/librosa/) to extract features that could better represent the genre content of a musical piece.
 You could use:
 - spectral features to capture the kind of instruments contained in the piece
