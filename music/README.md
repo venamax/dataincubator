@@ -8,28 +8,23 @@ The model will be assessed based on the accuracy score of your classifier.  Ther
 
 Raw audio files with music pieces can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_train.tar.gz).
 
-The data is organized in 10 folders, one for each genre:
-- blues
-- classical
-- country
-- disco
-- hiphop
+The music belongs to one for each genres:
+- electronic
+- folkcountry
 - jazz
-- metal
-- pop
-- reggae
+- raphiphop
 - rock
 
-Use the folder name as the genre label you are attempting to predict.
+Mapping of filename to genre for the training set is found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_train_labels.csv)
 
-Raw audio test files can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_test.tar.gz).
+Raw audio test files can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_feature_extraction_test.tar.gz).
 
 These files are randomized and anonymized.
 
 An additional dataset of pre-computed features can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_features_train.tar.gz).
 
 *Hints*
-- All songs are sampled at 22050 Hz.
+- All songs are sampled at 44100 Hz.
 - Extracting features from time series can be computationally intensive. Make sure you select which features to calculate wisely.
 - You can use MRJob or PySpark to distribute the feature extraction part of your model
 - Use a dimensionality reduction technique (e.g. PCA) or a feature selection criteria when possible
@@ -63,22 +58,7 @@ Your goal is to build a transformer that will output a "song fingerprint" featur
 
 2) Train an estimator that receives the features extracted by the transformer and predicts the genre of a song.
 
-Feel free to encode the songs with the following map:
-
-```python
-genremap = {'blues': 0,
-            'classical': 1,
-            'country': 2,
-            'disco': 3,
-            'hiphop': 4,
-            'jazz': 5,
-            'metal': 6,
-            'pop': 7,
-            'reggae': 8,
-            'rock': 9}
-```
-
-or use Scikit-Learn [LabelEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) to generate your own encoding.
+Use Scikit-Learn [LabelEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) to generate your own encoding for the labels.
 
 Use this pipeline to predict the genres for the 100 files in the `music_test.tar.gz` set and submit your predictions as a static list in the `__init__.py` file.
 
