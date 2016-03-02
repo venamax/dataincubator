@@ -1,8 +1,8 @@
 # Project Title
 
-From the point of view of data analysis, music offers an extremely rich and interesting playing field. The objective of this miniproject is to develop models that are able to recognize the genre of a musical piece, starting from the raw waveform or from pre-computed features. This is a typical example of a classification problem on time series data.
+Music offers an extremely rich and interesting playing field. The objective of this miniproject is to develop models that are able to recognize the genre of a musical piece, starting from the raw waveform or from pre-computed features. This is a typical example of a classification problem on time series data.
 
-The model will be assessed based on the accuracy score of your classifier.  There is a reference solution.  The reference solution has a score of 1.
+The model will be assessed based on the accuracy score of your classifier.  There is a reference solution.  The reference solution has a score of 1. *(Note that this doesn't mean that the accuracy of the reference solution is 1)*.
 
 ## Instructions for accessing the data
 
@@ -15,20 +15,21 @@ The music belongs to one for each genres:
 - raphiphop
 - rock
 
-Mapping of filename to genre for the training set is found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_train_labels.csv)
+Mapping of filename to genre for the **training set** is found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_train_labels.csv)
 
-Raw audio test files can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_feature_extraction_test.tar.gz).
+Raw audio **test set** can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_feature_extraction_test.tar.gz).
 
 These files are randomized and anonymized.
 
-An additional dataset of pre-computed features can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/music_features_train.tar.gz).
+An additional dataset of pre-computed features can be found [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/df_train_anon.csv).
 
 *Hints*
 - All songs are sampled at 44100 Hz.
-- Extracting features from time series can be computationally intensive. Make sure you select which features to calculate wisely.
-- You can use MRJob or PySpark to distribute the feature extraction part of your model
-- Use a dimensionality reduction technique (e.g. PCA) or a feature selection criteria when possible
-- Use GridSearchCV to improve score
+- Extracting features from time series can be computationally intensive. Make sure you select which features to calculate.
+- You can use MRJob or PySpark to distribute the feature extraction part of your model.
+- Use a dimensionality reduction technique (e.g. PCA) or a feature selection criteria when possible.
+- Use GridSearchCV to improve score.
+- The model needs to return the genre as a string. You'll need to create a wrapper class around scikit-learn estimators in order to do that.
 
 ## Submission instructions
 
@@ -60,12 +61,12 @@ Your goal is to build a transformer that will output a "song fingerprint" featur
 
 Use Scikit-Learn [LabelEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) to generate your own encoding for the labels.
 
-Use this pipeline to predict the genres for the 100 files in the `music_test.tar.gz` set and submit your predictions as a static list in the `__init__.py` file.
+Use this pipeline to predict the genres for the 145 files in the `music_feature_extraction_test.tar.gz` set and submit your predictions as a dictionary in the `__init__.py` file.
 
 
 ## Question 2
 ## All Features Predictions
-The approach of question 1 can be generalized to any number and kind of features extracted from a sliding window. Use the power of the [librosa library](http://bmcfee.github.io/librosa/) to extract features that could better represent the genre content of a musical piece.
+The approach of question 1 can be generalized to any number and kind of features extracted from a sliding window. Use the [librosa library](http://bmcfee.github.io/librosa/) to extract features that could better represent the genre content of a musical piece.
 You could use:
 - spectral features to capture the kind of instruments contained in the piece
 - MFCCs to capture the variations in frequencies along the piece
@@ -74,16 +75,16 @@ You could use:
 - wavelet based features
 - any combination of the above
 
-As for question 1, you'll need to summarize the time series containing the features using some sort of aggregation. This could be as simple as statistical descriptors or more involved. Your choice.
+As for question 1, you'll need to summarize the time series containing the features using some sort of aggregation. This could be as simple as statistical descriptors or more involved, your choice.
 
 As a general rule, build your model gradually. Choose few features that seem interesting, calculate the descriptors and generate predictions.
 
 Make sure you `GridSearchCV` the estimators to find the best combination of parameters.
 
-Use this pipeline to predict the genres for the 100 files in the `music_test.tar.gz` set and submit your predictions as a static list in the `__init__.py` file.
+Use this pipeline to predict the genres for the 145 files in the `music_feature_extraction_test.tar.gz` set and submit your predictions as a static list in the `__init__.py` file.
 
 **Question:**
-Does your transformer assume a certain duration for the music piece? If so how could that affect your predictions if you receive longer/shorter pieces?
+Does your transformer make any assumption on the time duration of the music piece? If so how could that affect your predictions if you receive longer/shorter pieces?
 
 This model works very well on 1 of the classes. Which one? Why do you think that is?
 
@@ -97,7 +98,6 @@ Build a pipeline to generate predictions from this featureset. Steps in the pipe
 - a dimensionality reduction or feature selection step
 - ... any other transformer you may find relevant ...
 - an estimator
+- a label encoder inverse transform to return the genre as a string
 
 Use GridSearchCV to find the scikit learn estimator with the best cross-validated performance and sumbit it as a packaged model.
-
-Your model should output the correct label in text.
