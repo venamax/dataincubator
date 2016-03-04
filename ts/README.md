@@ -23,37 +23,6 @@ The columns of the data correspond to the
 
 We will focus on using the temporal elements to predict the temperature.
 
-## Cross-validation is Different
-
-1. Cross validation is very different for time series than with other
-   machine-learning problem classes.  In normal machine learning, we select a
-   random subset of data as a validation set to estimate performance.  In time
-   series, we have to consider the problem that we are trying to solve is often
-   to predict a value in the future.  Therefore, the validation data always has
-   to occur *after* the training data.  As a simple example, consider that it
-   would not be very useful to have a predictor of tomorrow's temperature that
-   depended on the temperature the day after.
-
-   We usually handle this by doing a *sliding-window validation method*.
-   That is, we train on the last $n$ data points and validate the prediction on
-   the next $m$ data points, sliding the $n + m$ training / validation window
-   in time.  In this way, we can estimate the parameters of our model.  To test
-   the validity of the model, we might use a block of data at the end of our
-   time series which is reserved for testing the model with the learned
-   parameters.
-
-2. Another concern is whether the time series results are predictive.  In
-   economics and finance, we refer to this as the ergodicity assumption, that
-   past behavior can inform future behavior.  Many wonder if past behavior in
-   daily stock returns gives much predictive power for future behavior.
-
-**Warning:** Feature generation is sometimes a little different for
-time-series.  Usually, feature generation on a set is only based on data in
-that training example (e.g. extracting the time of day of the temperature
-measurement).  In time-series, we often want to use *lagged* data (the
-temperature an hour ago).  The easiest way to do this is to do the feature
-generation *before* making the training and validation split.
-
 ## Per city model
 
 It makes sense for each city to have it's own model.  Build a "groupby"
