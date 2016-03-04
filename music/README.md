@@ -25,15 +25,18 @@ An additional dataset of pre-computed features can be found [here](http://thedat
 
 *Hints*
 - All songs are sampled at 44100 Hz.
-- Extracting features from time series can be computationally intensive. Make sure you select which features to calculate.
-- You can use MRJob or PySpark to distribute the feature extraction part of your model.
-- Use a dimensionality reduction technique (e.g. PCA) or a feature selection criteria when possible.
-- Use GridSearchCV to improve score.
-- The model needs to return the genre as a string. You'll need to create a wrapper class around scikit-learn estimators in order to do that.
+
 
 ## Submission instructions
 
-For the questions involving building a model on raw audio files, you will need to run your model on the test set provided and submit your predictions as a static file. 
+For the questions involving predicting genre from raw audio files, you will need to run your model on the test set provided and submit your predictions as a static file. This is a dictionary of the form:
+
+    {
+    "fe_test_0001.mp3":"electronic",
+    "fe_test_0002.mp3":"rock",
+    ....
+    }
+
 Replace the default values in `__init__.py` with your answers. Avoid running "on-the-fly" computations or scripts in the file. The less moving parts there are, the easier it is on the grader.
 
 For the questions involving building a model on the pre-computed features, you will need to package your model with the solution in the same way as in the ML miniproject.
@@ -44,10 +47,11 @@ For the questions involving building a model on the pre-computed features, you w
 ## Raw Features Predictions
 The simplest features that can be extracted from a music time series are the [zero crossing rate](https://en.wikipedia.org/wiki/Zero-crossing_rate) and the [root mean square energy](https://en.wikipedia.org/wiki/Root_mean_square).
 
-1) Build a transformer that calculates these two features starting from a raw file input.
+1) Build a function or a transformer that calculates these two features starting from a raw file input.
 In order to go from a music file of arbitrary length to a fixed set of features you will need to use a sliding window approach, which implies making the following choices:
-- what window size are you going to use?
-- what's the overlap between windows?
+
+1) what window size are you going to use?
+2) what's the overlap between windows?
 
 Besides, you will need to decide how you are going to summarize the values of such features for the whole song. Several strategies are possible:
 -  you could decide to describe their statistics over the whole song by using descriptors like mean, std and higher order moments
@@ -63,6 +67,10 @@ Use Scikit-Learn [LabelEncoder](http://scikit-learn.org/stable/modules/generated
 
 Use this pipeline to predict the genres for the 145 files in the `music_feature_extraction_test.tar.gz` set and submit your predictions as a dictionary in the `__init__.py` file.
 
+*Hints*
+- Extracting features from time series can be computationally intensive. Make sure you choose wisely which features to calculate.
+- You can use MRJob or PySpark to distribute the feature extraction part of your model and then train an estimator on the extracted features.
+
 
 ## Question 2
 ## All Features Predictions
@@ -72,7 +80,6 @@ You could use:
 - MFCCs to capture the variations in frequencies along the piece
 - Temporal features like tempo and autocorrelation to capture the rythmic information of the piece
 - features based on psychoacoustic scales that emphasize certain frequency bands.
-- wavelet based features
 - any combination of the above
 
 As for question 1, you'll need to summarize the time series containing the features using some sort of aggregation. This could be as simple as statistical descriptors or more involved, your choice.
@@ -90,9 +97,9 @@ This model works very well on 1 of the classes. Which one? Why do you think that
 
 ## Question 3
 ## All Features Model
-The `music_features_train.tar.gz` set contains 549 pre-computed features for the the training set. The last two columns contain the genre and the encoded class label.
+The `df_train_anon.csv` file contains 549 pre-computed features for the training set. The last column contains the genre.
 
-Build a pipeline to generate predictions from this featureset. Steps in the pipeline could include:
+Build a model to generate predictions from this featureset. Steps in the pipeline could include:
 
 - a normalization step (not all features have the same size or distribution)
 - a dimensionality reduction or feature selection step
@@ -101,3 +108,8 @@ Build a pipeline to generate predictions from this featureset. Steps in the pipe
 - a label encoder inverse transform to return the genre as a string
 
 Use GridSearchCV to find the scikit learn estimator with the best cross-validated performance and sumbit it as a packaged model.
+
+*Hints*
+- Use a dimensionality reduction technique (e.g. PCA) or a feature selection criteria when possible.
+- Use GridSearchCV to improve score.
+- The model needs to return the genre as a string. You'll need to create a wrapper class around scikit-learn estimators in order to do that.
