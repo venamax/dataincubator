@@ -142,7 +142,7 @@ Note that a pipeline can have multiple transformers chained up but at most one
    versions of your model which you'll never use. From a deployment standpoint,
    it makes sense to only submit the best estimator once you've trained on the
    full data set. To troubleshoot deployment errors look
-   [here](https://sites.google.com/a/thedataincubator.com/the-data-incubator-wiki/course-information-and-logistics/course/common-miniproject-errors).
+   [here](https://sites.google.com/a/thedataincubator.com/the-data-incubator-wiki/projects/common-miniproject-errors-2).
 
 # Questions
 

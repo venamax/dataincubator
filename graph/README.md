@@ -76,7 +76,7 @@ disk so that you can quickly retrieve it.  Now comes the parsing part.
 
 For the analysis, we think of the problem in terms of a
 [network](http://en.wikipedia.org/wiki/Computer_network) or a
-[graph](http://en.wikipedia.org/wiki/Graph_%28mathematics%29).  Any time a pair
+[graph](https://en.wikipedia.org/wiki/Graph_%28discrete_mathematics%29).  Any time a pair
 of people appear in a photo together, that is considered a link.  What we have
 described is more appropriately called an (undirected)
 [multigraph](http://en.wikipedia.org/wiki/Multigraph) with no self-loops but

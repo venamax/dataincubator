@@ -70,7 +70,7 @@ to produce a map of average scores by zip code.  You can sign up for a free
 trial.
 
 You will have to use their wizard to plot the data by
-[zipcode](http://docs.cartodb.com/cartodb-editor.html#geocoding-data).  Then
+[zipcode](http://docs.cartodb.com/cartodb-editor/managing-your-data/#geocoding-data).  Then
 use the "share" button to return a link of the form https://x.cartodb.com/...
 
 **For fun:** How do JFK, Brighton Beach, Liberty Island (home of the Statue of
