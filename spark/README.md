@@ -80,14 +80,16 @@ if __name__ == '__main__':
    Also be wary of integer overflow when dealing with Longs. For example, these two are not equal:
    val year: Long = 365 * 24 * 60 * 60 * 1000
    val year: Long = 365 * 24 * 60 * 60 * 1000L
+8. If you want to use your personal AWS keys, you can overwrite `~/.mrjob.conf`
+   with yours. Keys for our S3 bucket are saved under `~/.aws/config`. If you
+   ever want to run mrjob using our keys for S3 access, you can simply remove
+   the keys from .mrjob.conf and (according to the mrjob docs), the keys in
+   `~/.aws/config` will take precedence.
 
 *Question:* What are the circumstances that make Spark a favorable/unfavorable approach here?
 
-# Submission                                                                                                                                                                                                 
-Replace the default values in `__init__.py` with your answers. Avoid running                                                                                                                                 
-"on-the-fly" computations or scripts in this file. Ideally it should be a                                                                                                                                    
-static list which you paste in or load from file. The less moving parts there                                                                                                                                
-are, the easier it is on the grader.
+# Submission
+Replace the default values in `__init__.py` with your answers.
 
 # Questions
 
