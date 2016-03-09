@@ -26,6 +26,12 @@ You can run jobs on full datasets as follows (using simple as an example):
 ```
 python job_file.py -r hadoop s3n://thedataincubator-course/mrdata/simple/
 ```
+or using the only the local cores as:
+```
+python job_file.py -r local s3n://thedataincubator-course/mrdata/simple/
+```
+Using `-r local` can be faster if the data is not too big.
+
 You can also pass an entire local directory of data (eg. `data/simple/`) as
 the input.
 
@@ -117,6 +123,8 @@ should words outside of the tag `<text></text>`.
 
 3. Don't forget that the Wikipedia format can have multiple revisions but you
    only want the latest one.
+
+4. What happens if a content from a page is split across two different mappers? How does this problem scale with data size?
 
 **Checkpoint**
 Total unique words: 868,223
