@@ -53,7 +53,7 @@ In order to go from a music file of arbitrary length to a fixed set of features 
 1) what window size are you going to use?
 2) what's the overlap between windows?
 
-Besides, you will need to decide how you are going to summarize the values of such features for the whole song. Several strategies are possible:
+Besides that, you will need to decide how you are going to summarize the values of such features for the whole song. Several strategies are possible:
 -  you could decide to describe their statistics over the whole song by using descriptors like mean, std and higher order moments
 -  you could decide to split the song in sections, calculate statistical descriptors for each section and then average them
 -  you could decide to look at the rate of change of features from one window to the next (deltas).
