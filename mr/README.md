@@ -50,11 +50,14 @@ probably doing it wrong.  For example, mapreduce jobs for
 `Top100WordsSimpleWikipediaNoMetaData` are less than 150 lines of code
 (including generous blank lines and biolerplate code)
 
-# Submission                                                                                                                                                                                                 
-Replace the default values in `__init__.py` with your answers. Avoid running
-"on-the-fly" computations or scripts in this file. Ideally it should be a
-static list which you paste in or load from file. The less moving parts there
-are, the easier it is on the grader.
+If you want to use your personal AWS keys, you can overwrite `~/.mrjob.conf`
+with yours. Keys for our S3 bucket are saved under `~/.aws/config`. If you
+ever want to run mrjob using our keys for S3 access, you can simply remove
+the keys from .mrjob.conf and (according to the mrjob docs), the keys in
+`~/.aws/config` will take precedence.
+
+# Submission
+Replace the default values in `__init__.py` with your answers.
 
 # Questions
 
