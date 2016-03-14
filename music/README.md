@@ -29,7 +29,7 @@ An additional dataset of pre-computed features can be found [here](http://thedat
 
 ## Submission instructions
 
-For the questions involving predicting genre from raw audio files, you will need to run your model on the test set provided and submit your predictions as a static file. This is a dictionary of the form:
+For the questions involving predicting genre from raw audio files (Questions 1 & 2), you will need to run your model on the test set provided and submit your predictions as a static file. This is a dictionary of the form:
 
     {
     "fe_test_0001.mp3":"electronic",
@@ -39,7 +39,7 @@ For the questions involving predicting genre from raw audio files, you will need
 
 Replace the default values in `__init__.py` with your answers. Avoid running "on-the-fly" computations or scripts in the file. The less moving parts there are, the easier it is on the grader.
 
-For the questions involving building a model on the pre-computed features, you will need to package your model with the solution in the same way as in the ML miniproject.
+For the question involving building a model on the pre-computed features (Question 3), you will need to package your model with the solution in the same way as in the ML miniproject.
 
 # Questions
 
