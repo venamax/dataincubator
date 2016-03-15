@@ -26,6 +26,12 @@ You can run jobs on full datasets as follows (using simple as an example):
 ```
 python job_file.py -r hadoop s3n://thedataincubator-course/mrdata/simple/
 ```
+or using the only the local cores as:
+```
+python job_file.py -r local s3n://thedataincubator-course/mrdata/simple/
+```
+Using `-r local` can be faster if the data is not too big.
+
 You can also pass an entire local directory of data (eg. `data/simple/`) as
 the input.
 
@@ -44,11 +50,14 @@ probably doing it wrong.  For example, mapreduce jobs for
 `Top100WordsSimpleWikipediaNoMetaData` are less than 150 lines of code
 (including generous blank lines and biolerplate code)
 
+If you want to use your personal AWS keys, you can overwrite `~/.mrjob.conf`
+with yours. Keys for our S3 bucket are saved under `~/.aws/config`. If you
+ever want to run mrjob using our keys for S3 access, you can simply remove
+the keys from .mrjob.conf and (according to the mrjob docs), the keys in
+`~/.aws/config` will take precedence.
+
 # Submission
-Replace the default values in `__init__.py` with your answers. Avoid running
-"on-the-fly" computations or scripts in this file. Ideally it should be a
-static list which you paste in or load from file. The less moving parts there
-are, the easier it is on the grader.
+Replace the default values in `__init__.py` with your answers.
 
 # Questions
 
@@ -117,6 +126,8 @@ should words outside of the tag `<text></text>`.
 
 3. Don't forget that the Wikipedia format can have multiple revisions but you
    only want the latest one.
+
+4. What happens if a content from a page is split across two different mappers? How does this problem scale with data size?
 
 **Checkpoint:**
 Total unique words: 868,223
