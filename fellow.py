@@ -33,6 +33,7 @@ import nlp          # noqa
 import spark        # noqa
 import SQL          # noqa
 import ts           # noqa
+import music        # noqa
 
 @app.task(name="celery.list_tasks")
 def list_tasks():
