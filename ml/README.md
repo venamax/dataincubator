@@ -16,16 +16,15 @@ hard to beat).  The reference solution has a score of 1.
 
 ## Download and parse the incoming data
 
-[link](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/yelp_train_academic_dataset_business.json.gz)
-
+The data are [here](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/yelp_train_academic_dataset_business.json.gz).
 Notice that each row of the file is a json blurb.  You can read it in python.
 
 ### Hints:
-1. [gzip.open](https://docs.python.org/2/library/gzip.html)) has the same
+1. [gzip.open](https://docs.python.org/2/library/gzip.html) has the same
    interface as `open` but is for `.gz` files.
-2. [ujson](http://docs.micropython.org/en/latest/library/ujson.html)) has the
+2. [ujson](http://docs.micropython.org/en/latest/library/ujson.html) has the
    same interfase as the built-in `json` library, but is *substantially* faster
-   (at the cost of non-robust handling of malformed json)
+   (at the cost of non-robust handling of malformed json).
 
 ## Setup cross-validation:
 In order to track the performance of your machine-learning, you might want to
@@ -72,7 +71,7 @@ estimator.  Upon fitting, it fits the best model (based on the inputted
 hyperparameters) and uses that for prediction.
 
 Of course, we sometimes need to process or transform the data before we can do
-machine-learning on it.  `sklearn` has Transformers to help with this.  They
+machine-learning on it.  `sklearn` has transformers to help with this.  They
 implement this interface:
 
 ``` python
@@ -143,7 +142,7 @@ Note that a pipeline can have multiple transformers chained up but at most one
    versions of your model which you'll never use. From a deployment standpoint,
    it makes sense to only submit the best estimator once you've trained on the
    full data set. To troubleshoot deployment errors look
-   [here](https://sites.google.com/a/thedataincubator.com/the-data-incubator-wiki/course-information-and-logistics/course/common-miniproject-errors). 
+   [here](https://sites.google.com/a/thedataincubator.com/the-data-incubator-wiki/projects/common-miniproject-errors-2).
 
 # Questions
 

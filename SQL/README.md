@@ -4,7 +4,7 @@ Inspections data for the last 4 years are available
 
 The file `RI_Webextract_BigApps_Latest.xls` contains a description of each of
 the datafiles.  Take a look and then load the csv formatted `*.txt` files into
-Postgresql into five tables:
+a database as five tables:
 1. `actions`
 2. `cuisines`
 3. `violations`
@@ -46,22 +46,22 @@ are, the easier it is on the grader.
 
 ## score_by_zipcode
 Return a list of tuples of the form:
-```
-(zipcode, mean score, standard error, number of restaurants)
-```
+
+    (zipcode, mean score, standard error, number of restaurants)
+
 for each of the 92 zipcodes in the city with over 100 restaurants. Use the
-latest inspection for each restaurant to calculate the score. Sort the
-list in ascending order by mean score. You can read more about standard error
-on [wikipedia](http://en.wikipedia.org/wiki/Standard_error).
+score from the latest inspection date for each restaurant. Sort the list in
+ascending order by mean score. You can read more about standard error on
+[wikipedia](http://en.wikipedia.org/wiki/Standard_error).
 
 **Note:** There is an interesting discussion here about what the mean score
-*means* in this dataset. Think about what we're actually calculating - 
+*means* in this dataset. Think about what we're actually calculating -
 does it represent what we're trying to understand about these zipcodes?
 
 What if we use the average of a restaurant's inspections instead of the latest?
 
-**Checkpoint**
-Total unique restaurants: 25,232
+**Checkpoints:**
+Total unique restaurants: 25,232;
 Total restaurants in valid zipcodes: 20,349
 
 ## score_by_map
@@ -70,7 +70,7 @@ to produce a map of average scores by zip code.  You can sign up for a free
 trial.
 
 You will have to use their wizard to plot the data by
-[zipcode](http://docs.cartodb.com/cartodb-editor.html#geocoding-data).  Then
+[zipcode](http://docs.cartodb.com/cartodb-editor/managing-your-data/#geocoding-data).  Then
 use the "share" button to return a link of the form https://x.cartodb.com/...
 
 **For fun:** How do JFK, Brighton Beach, Liberty Island (home of the Statue of
@@ -78,21 +78,22 @@ Liberty), Financial District, Chinatown, and Coney Island fare?
 
 ## score_by_borough
 Return a list of tuples of the form:
-    ```
+
     (borough, mean score, stderr, number of restaurants)
-    ```
+
 for each of the city's five boroughs. Sort the list in ascending order by grade.
 
-**Hint**: you will have to perform a join with the `boroughs` table.
+**Hint:** You will have to perform a join with the `boroughs` table.
+The borough names should be reported in ALL CAPS.
 
-**Checkpoint**
+**Checkpoint:**
 Total restaurants in valid boroughs: 25,220
 
 ## score_by_cuisine
 Return a list of the 75 tuples of the form
-    ```
+
     (cuisine, mean score, stderr, number of reports)
-    ```
+
 for each of the 75 cuisine types with at least 100 violation reports. Sort the
 list in ascending order by score. Are the least sanitary and most sanitary
 cuisine types surprising?
@@ -101,7 +102,7 @@ cuisine types surprising?
 to say and how it differs from the analysis by zipcode. How should this
 affect the calculation in your opinion?
 
-**Checkpoint**
+**Checkpoint:**
 Total entries from valid cuisines: 531,529
 
 ## violation_by_cuisine
@@ -120,11 +121,10 @@ The right quantity is to look at is the conditional probability of a specific
 type of violation given a specific cuisine type and divide it by the
 unconditional probability of the violation for the entire population. Taking
 this ratio gives the right answer.  Return the 20 highest ratios of the form:
-    ```
-    ((cuisine, violation), ratio, count)
-    ```
 
-**Hint**:
+    ((cuisine, violation), ratio, count)
+
+**Hint:**
 1. You might want to check out this [Stackoverflow
    post](http://stackoverflow.com/questions/972877/calculate-frequency-using-sql).
 2. The definition of a violation changes with time.  For example, 10A can mean
@@ -137,5 +137,5 @@ this ratio gives the right answer.  Return the 20 highest ratios of the form:
    for a specific category are not large (why not?).  Be sure to filter these
    out.  We chose 100 as our cutoff.
 
-**Checkpoint**:
+**Checkpoint:**
 Top 20 ratios mean: 2.37009216349859

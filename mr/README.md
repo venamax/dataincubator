@@ -26,6 +26,12 @@ You can run jobs on full datasets as follows (using simple as an example):
 ```
 python job_file.py -r hadoop s3n://thedataincubator-course/mrdata/simple/
 ```
+or using the only the local cores as:
+```
+python job_file.py -r local s3n://thedataincubator-course/mrdata/simple/
+```
+Using `-r local` can be faster if the data is not too big.
+
 You can also pass an entire local directory of data (eg. `data/simple/`) as
 the input.
 
@@ -44,11 +50,14 @@ probably doing it wrong.  For example, mapreduce jobs for
 `Top100WordsSimpleWikipediaNoMetaData` are less than 150 lines of code
 (including generous blank lines and biolerplate code)
 
-# Submission                                                                                                                                                                                                 
-Replace the default values in `__init__.py` with your answers. Avoid running
-"on-the-fly" computations or scripts in this file. Ideally it should be a
-static list which you paste in or load from file. The less moving parts there
-are, the easier it is on the grader.
+If you want to use your personal AWS keys, you can overwrite `~/.mrjob.conf`
+with yours. Keys for our S3 bucket are saved under `~/.aws/config`. If you
+ever want to run mrjob using our keys for S3 access, you can simply remove
+the keys from .mrjob.conf and (according to the mrjob docs), the keys in
+`~/.aws/config` will take precedence.
+
+# Submission
+Replace the default values in `__init__.py` with your answers.
 
 # Questions
 
@@ -56,7 +65,7 @@ are, the easier it is on the grader.
 Return a list of the top 100 words in article text (in no particular order).
 You will need to write this as two map reduces:
 
-1. The first job is similar to standard wordcount but with a few tweaks. 
+1. The first job is similar to standard wordcount but with a few tweaks.
    The data provided for wikipedia is in in \*.xml.bz2 format.  Mrjob will
    automatically decompress bz2.  We'll deal with the xml in the next question.
    For now, just treat it as text.  A few hints:
@@ -88,8 +97,8 @@ You will need to write this as two map reduces:
         - `mapper_final`
      There are similar functions in the reducer.  Also, while the run method
      to launch the mapreduce job is a classmethod:
-        ``` 
-          if __name__ == '__main__': MRWordCount.run() 
+        ```
+          if __name__ == '__main__': MRWordCount.run()
         ```
      actual objects are instantiated on the map and reduce nodes.  More
      precisely, a separate mapper class is instantiated in each map node and a
@@ -98,7 +107,7 @@ You will need to write this as two map reduces:
      Remember that to pass state between the map and reduce phase, you will
      have to use `yield` in the mapper and read each line in the reducer.
 
-**Checkpoint**
+**Checkpoint:**
 Total unique words: 1,584,646
 
 ## top100_words_simple_text
@@ -118,7 +127,9 @@ should words outside of the tag `<text></text>`.
 3. Don't forget that the Wikipedia format can have multiple revisions but you
    only want the latest one.
 
-**Checkpoint**
+4. What happens if a content from a page is split across two different mappers? How does this problem scale with data size?
+
+**Checkpoint:**
 Total unique words: 868,223
 
 ## top100_words_simple_no_metadata
@@ -138,15 +149,15 @@ colorfully-named
 provisioned on the `mrjob` and supports the convenient helper function
 `filter_text()`.
 
-**Checkpoint**
+**Checkpoint:**
 Total unique words: 863,909
 
 ## wikipedia_entropy
 The [Shannon
-entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) of a
-discrete random variable with probability mass function p(x) is: 
+entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory) of a
+discrete random variable with probability mass function p(x) is:
 
-    $$ H(X) = - \sum p(x) \log_2 p(x) $$ 
+    $$ H(X) = - \sum p(x) \log_2 p(x) $$
 
 You can think of the Shannon entropy as the number of bits needed to store
 things if we had perfect compression.  It is also closely tied to the notion of
@@ -156,7 +167,7 @@ You'll be estimating the Shannon entropy of different Simple English and Thai
 based off of their Wikipedias. Do this with n-grams of characters, by first
 calculating the entropy of a single n-gram and then dividing by n to get the
 per-character entropy. Use n-grams of size 1, 2, 3.  How should our
-per-character entropy estimates vary based off of n?  How should they vary by
+per-character entropy estimates vary with n?  How should they vary by
 the size of the corpus? How much data would we need to get reasonable entropy
 estimates for each n?
 
@@ -173,21 +184,20 @@ Notes:
 - Do not use the previous regex `\w+` to split --- depending on your system
   configuration, this may only match English characters, which would severely
   skew entropy estimates for Thai. Be careful about unicode.
-- Please treat all whitespace as the same character.  You can do this by 
+- Please treat all whitespace as the same character.  You can do this by
   `" ".join(text.split())`
 - For reference, the exact code we use to extract text is:
-     ```
-     wikicode = mwparserfromhell.parse(text)
-     text = " ".join(" ".join(fragment.value.split())
-                     for fragment in wikicode.filter_text())
-     ```
+
+      wikicode = mwparserfromhell.parse(text)
+      text = " ".join(" ".join(fragment.value.split())
+                      for fragment in wikicode.filter_text())
 
 A naive implementation of this job will take a very long time to run.  Instead,
 we will need to use a few optimizations:
-1. See [http://www.johndcook.com/blog/2013/08/17/calculating-entropy/] on how
-   to calculate entropy efficiently.
+1. See [this post](http://www.johndcook.com/blog/2013/08/17/calculating-entropy/)
+   on how to calculate entropy efficiently.
 2. It turns out that writing to disk is the most expensive part of a
-   map-reduce.  (Zipf's law)[https://en.wikipedia.org/wiki/Zipf's_law] tells us
+   map-reduce.  [Zipf's law](https://en.wikipedia.org/wiki/Zipf's_law) tells us
    that only a handful (relatively-speaking) of n-grams make up most of our
    observations.  Can you do a map-side cache of these values to reduce the
    number of writes?
@@ -226,7 +236,7 @@ The same thing but for all of English Wikipedia.  This is the real test of how
 well your algorithm scales!  The data is also located on
 [s3](s3://thedataincubator-course/mrdata/english/).
 
-**Note**
+**Note:**
 Because of the size of the dataset, this job may take several hours to complete.
 It's advisable to run it overnight once you're reasonably sure it will work
 (due to testing the code on smaller inputs).
@@ -235,8 +245,8 @@ As a barometer, our reference solution takes around 5 hours to run.
 
 ## double_link_stats_simple
 Instead of analyzing single links, let's look at double links.  That is, pages
-A and C that are connected through many pages B where there is a link 
-`A -> B -> C` or `C -> B -> A'. Find the list of all pairs `(A, C)` (you can
+A and C that are connected through many pages B where there is a link
+`A -> B -> C` or `C -> B -> A`. Find the list of all pairs `(A, C)` (you can
 use alphabetical ordering to break symmetry) that have the 100 "most"
 connections (see below for the definition of "most").  This should give us a
 notion that the articles `A` and `C` refer to tightly related concepts.

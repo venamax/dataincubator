@@ -7,11 +7,10 @@ review data.
 
 Your model will be assessed based on how root mean squared error of the number
 of stars you predict.  There is a reference solution (which should not be too
-hard to beat).  The reference solution has a score of 1.
+hard to beat) that defines the score of 1.
 
-The data is available at:
-
-[http://thedataincubator.s3.amazonaws.com/coursedata/mldata/yelp_train_academic_dataset_review.json.gz]
+The data is available at on
+[S3](http://thedataincubator.s3.amazonaws.com/coursedata/mldata/yelp_train_academic_dataset_review.json.gz).
 
 
 ## Helpful notes:
@@ -28,7 +27,7 @@ The data is available at:
   estimator and/or parameters. (Remember to retrain on the entire dataset
   before submitting).
 
-# Submission                                                                                                                                                                                                 
+# Submission
 Replace the return values in `__init__.py` with predictions from your models.
 Avoid running "on-the-fly" computations or scripts in this file. Ideally you
 should load your pickled model from file (in the global scope) then call
@@ -53,7 +52,7 @@ Build a linear model based on the count of the words in each document
                              .CountVectorizer() \
                              .fit_transform(text)
        y = scores
-   ``` 
+   ```
    and then running grid-serach and cross-validation only on of this
    pre-processed data.  `CountVectorizer` has to memorize the mapping between
    words and the index to which it is assigned.  This is linear in the size of
@@ -113,7 +112,7 @@ are all methods of addressing this issue. If you are using `CountVectorizer`,
 it is possible to run it with a fixed vocabulary (based on a training run, for
 instance). Check the documentation.
 
-*** A side note on multi-stage model evaluation: When your model consists of a
+**A side note on multi-stage model evaluation:** When your model consists of a
 pipeline with several stages, it can be worthwhile to evaluate which parts of
 the pipeline have the greatest impact on the overall accuracy (or other metric)
 of the model. This allows you to focus your efforts on improving the important
@@ -158,18 +157,19 @@ is small.  We can fix this by applying Bayesian smoothing to $p(w)$
 (i.e. mixing the empirical distribution with the uniform distribution over
 the vocabulary).
 
-1. How does changing this smoothing parameter effect the word pairs you get
+1. How does changing this smoothing parameter affect the word pairs you get
    qualitatively?
 
 2. We can interpret the smoothing parameter as adding a constant number of
-   occurences of each word to our distribution.  Does this help you determine
+   occurrences of each word to our distribution.  Does this help you determine
    set a reasonable value for this 'prior factor'?
 
 3. For fun: also check out [Amazon's Statistically Improbable
    Phrases](http://en.wikipedia.org/wiki/Statistically_Improbable_Phrases).
 
-*Implementation notes:*
+*Implementation note:*
 - The reference solution is not an aggressive filterer. Although there are
-  definitely artifacts in the bigrams you'll find, many of the seeming nonsense
-  words are actually somewhat meaningful and so using smoothing parameters in
-  the thousands or a high min_df might give you different results.
+  definitely artifacts in the bigrams you'll find, many of the seemingly
+  nonsensical words are actually somewhat meaningful.  Using smoothing
+  parameters in the thousands or a high min_df might give you different
+  results.

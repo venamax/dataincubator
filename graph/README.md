@@ -76,7 +76,7 @@ disk so that you can quickly retrieve it.  Now comes the parsing part.
 
 For the analysis, we think of the problem in terms of a
 [network](http://en.wikipedia.org/wiki/Computer_network) or a
-[graph](http://en.wikipedia.org/wiki/Graph_%28mathematics%29).  Any time a pair
+[graph](https://en.wikipedia.org/wiki/Graph_%28discrete_mathematics%29).  Any time a pair
 of people appear in a photo together, that is considered a link.  What we have
 described is more appropriately called an (undirected)
 [multigraph](http://en.wikipedia.org/wiki/Multigraph) with no self-loops but
@@ -86,21 +86,21 @@ In this problem, we will analyze the social graph of the new york social elite.
 
 We recommend using python's `networkx` library.
 
-# Submission                                                                                                                                                                                                 
-Replace the default values in `__init__.py` with your answers. Avoid running                                                                                                                                 
-"on-the-fly" computations or scripts in this file. Ideally it should be a                                                                                                                                    
-static list which you paste in or load from file. The less moving parts there                                                                                                                                
-are, the easier it is on the grader.
+# Submission
+Replace the default values in `__init__.py` with your answers. Avoid
+running "on-the-fly" computations or scripts in this file. Ideally it
+should be a static list which you paste in or load from file. The fewer
+moving parts there are, the easier it is on the grader.
 
 # Questions
 
-**Checkpoint**
-Total number of names found: 113,031
-Total number of non-reflexive pairs found: 196,245
-Total number of raw captions: 113,325
+**Checkpoints:**
+Total number of names found: 113,031;
+Total number of *non-reflexive* pairs found: 196,245;
+Total number of raw captions: 113,325;
 Total number of valid captions: 102,736
 
-"non-reflexive" excludes the unwanted cases where someone is connected to
+*non-reflexive* excludes the unwanted cases where someone is connected to
 themselves.
 
 ## 1. degree
@@ -109,16 +109,17 @@ answer this question is to look at how many connections everyone has.  Return
 the top 100 people and their degree.  Remember that if an edge of the graph has
 weight 2, it counts for 2 in the degree.
 
-**Checkpoint**
+**Checkpoint:**
 Top 100 .describe()
-"count": 100.0
-"mean": 189.92
-"std": 87.8053034454
-"min": 124.0
-"25%": 138.0
-"50%": 157.0
-"75%": 195.0
-"max": 666.0
+
+    "count": 100.0
+    "mean": 189.92
+    "std": 87.8053034454
+    "min": 124.0
+    "25%": 138.0
+    "50%": 157.0
+    "75%": 195.0
+    "max": 666.0
 
 ## 2. pagerank
 A similar way to determine popularity is to look at their
@@ -131,16 +132,17 @@ chain](http://en.wikipedia.org/wiki/Markov_chain) implied by the social graph.
 Use 0.85 as the damping parameter so that there is a 15% chance of jumping to
 another vertex at random.
 
-**Checkpoint**
+**Checkpoint:**
 Top 100 .describe()
-"count": 100.0
-"mean": 0.0001841088
-"std": 0.0000758068
-"min": 0.0001238355
-"25%": 0.0001415028
-"50%": 0.0001616183
-"75%": 0.0001972663
-"max": 0.0006085816
+
+    "count": 100.0
+    "mean": 0.0001841088
+    "std": 0.0000758068
+    "min": 0.0001238355
+    "25%": 0.0001415028
+    "50%": 0.0001616183
+    "75%": 0.0001972663
+    "max": 0.0006085816
 
 ## 3. best_friends
 Another interesting question is who tend to co-occur with each other.  Give
@@ -149,13 +151,14 @@ us the 100 edges with the highest weights.
 Google these people and see what their connection is.  Can we use this to
 detect instances of infidelity?
 
-**Checkpoint**
+**Checkpoint:**
 Top 100 .describe()
-"count": 100.0
-"mean": 25.84
-"std": 16.0395470855
-"min": 14.0
-"25%": 16.0
-"50%": 19.0
-"75%": 29.25
-"max": 109.0
+
+    "count": 100.0
+    "mean": 25.84
+    "std": 16.0395470855
+    "min": 14.0
+    "25%": 16.0
+    "50%": 19.0
+    "75%": 29.25
+    "max": 109.0

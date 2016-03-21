@@ -1,130 +1,130 @@
 name: datacourse
 dependencies:
-- beautiful-soup=4.3.2=py27_0
-- bokeh=0.9.2=np19py27_0
-- boto=2.38.0=py27_0
-- cairo=1.12.18=4
-- certifi=14.05.14=py27_0
-- cffi=1.1.2=py27_0
-- chest=0.2.3=py27_0
-- dask=0.7.0
-- decorator=4.0.2=py27_0
-- dill=0.2.4=py27_0
-- ecdsa=0.11=py27_0
-- enum34=1.0.4=py27_0
-- fabric=1.10.2=py27_0
-- fastcache=1.0.2=py27_0
-- flake8=2.3.0=py27_0
-- flask=0.10.1=py27_1
-- fontconfig=2.11.1=4
-- freetype=2.5.2=2
-- funcsigs=0.4=py27_0
-- futures=3.0.3=py27_0
-- hdf5=1.8.15.1=1
-- heapdict=1.0.0=py27_0
-- html5lib=0.999=py27_0
-- ipython=3.2.1=py27_0
-- ipython-notebook=3.2.1=py27_0
-- itsdangerous=0.24=py27_0
-- jinja2=2.8=py27_0
-- jsonschema=2.4.0=py27_0
-- libffi=3.0.13=0
-- libpng=1.6.17=0
-- libsodium=0.4.5=0
-- libxml2=2.9.2=0
-- libxslt=1.1.28=0
-- locket=0.2.0=py27_0
-- lxml=3.4.4=py27_0
-- markdown2=2.3.0=py27_0
-- markupsafe=0.23=py27_0
-- matplotlib=1.4.3=np19py27_2
-- mccabe=0.3=py27_1
-- mistune=0.7=py27_0
-- networkx=1.10=py27_0
-- nltk=3.0.4=np19py27_0
-- nose=1.3.7=py27_0
-- numexpr=2.4.3=np19py27_0
-- numpy=1.9.2=py27_0
-- openssl=1.0.1k=1
-- pandas=0.16.2=np19py27_0
-- paramiko=1.15.2=py27_0
-- partd=0.3.2=np19py27_0
-- patsy=0.4.0=np19py27_0
-- pep8=1.6.2=py27_0
-- pip=7.1.0=py27_1
-- pixman=0.26.2=0
-- psutil=3.1.1=py27_0
-- ptyprocess=0.4=py27_0
-- py=1.4.30=py27_0
-- py2cairo=1.10.0=py27_2
-- pycparser=2.14=py27_0
-- pycrypto=2.6.1=py27_0
-- pyflakes=0.9.2=py27_0
-- pygments=2.0.2=py27_0
-- pyparsing=2.0.3=py27_0
-- pyqt=4.11.3=py27_1
-- pytables=3.2.0=np19py27_0
-- pytest=2.7.2=py27_0
-- python=2.7.10=0
-- python-dateutil=2.4.2=py27_0
-- pytz=2015.4=py27_0
-- pyyaml=3.11=py27_1
-- pyzmq=14.7.0=py27_0
-- qt=4.8.6=3
-- quandl=2.8.8=np19py27_0
-- readline=6.2=2
-- requests=2.7.0=py27_0
-- scikit-learn=0.16.1=np19py27_0
-- scipy=0.16.0=np19py27_0
-- seaborn=0.6.0=np19py27_0
-- setuptools=18.0.1=py27_0
-- sip=4.16.5=py27_0
-- six=1.9.0=py27_0
-- sqlalchemy=1.0.8=py27_0
-- sqlite=3.8.4.1=1
-- sqlparse=0.1.15=py27_0
-- ssl_match_hostname=3.4.0.2=py27_0
-- statsmodels=0.6.1=np19py27_0
-- sympy=0.7.6=py27_0
+- beautiful-soup=4.3.2=py27_0  # MIT http://www.crummy.com/software/BeautifulSoup/
+- bokeh=0.9.2=np19py27_0  # New BSD
+- boto=2.38.0=py27_0  # MIT
+- cairo=1.12.18=4  # LGPL 2.1, MPL 1.1
+- certifi=14.05.14=py27_0  # ISC
+- cffi=1.1.2=py27_0  # MIT
+- chest=0.2.3=py27_0  # BSD
+- dask=0.7.0  # BSD
+- decorator=4.0.2=py27_0  # new BSD License
+- dill=0.2.4=py27_0  # 3-clause BSD
+- ecdsa=0.11=py27_0  # MIT
+- enum34=1.0.4=py27_0  # BSD License
+- fabric=1.10.2=py27_0  # License :: OSI Approved :: BSD License
+- fastcache=1.0.2=py27_0  # MIT
+- flake8=2.3.0=py27_0  # MIT
+- flask=0.10.1=py27_1  # BSD
+- fontconfig=2.11.1=4  # BSD
+- freetype=2.5.2=2  # FreeType License
+- funcsigs=0.4=py27_0  # ASL
+- futures=3.0.3=py27_0  # BSD
+- hdf5=1.8.15.1=1  # BSD-like
+- heapdict=1.0.0=py27_0  # BSD
+- html5lib=0.999=py27_0  # MIT License
+- ipython=3.2.1=py27_0  # BSD
+- ipython-notebook=3.2.1=py27_0  # BSD https://pypi.python.org/pypi/ipython
+- itsdangerous=0.24=py27_0  # License :: OSI Approved :: BSD License
+- jinja2=2.8=py27_0  # BSD
+- jsonschema=2.4.0=py27_0  # MIT
+- libffi=3.0.13=0  # MIT
+- libpng=1.6.17=0  # libpng license
+- libsodium=0.4.5=0  # MIT
+- libxml2=2.9.2=0  # MIT
+- libxslt=1.1.28=0  # MIT
+- locket=0.2.0=py27_0  # License :: OSI Approved :: BSD License
+- lxml=3.4.4=py27_0  # License :: OSI Approved :: BSD License
+- markdown2=2.3.0=py27_0  # MIT
+- markupsafe=0.23=py27_0  # BSD
+- matplotlib=1.4.3=np19py27_2  # BSD
+- mccabe=0.3=py27_1  # Expat license
+- mistune=0.7=py27_0  # BSD
+- networkx=1.10=py27_0  # BSD
+- nltk=3.0.4=np19py27_0  # Apache License, Version 2.0
+- nose=1.3.7=py27_0  # GNU LGPL
+- numexpr=2.4.3=np19py27_0  # MIT
+- numpy=1.9.2=py27_0  # BSD
+- openssl=1.0.1k=1  # Apache-style
+- pandas=0.16.2=np19py27_0  # BSD
+- paramiko=1.15.2=py27_0  # LGPL
+- partd=0.3.2=np19py27_0  # BSD
+- patsy=0.4.0=np19py27_0  # 2-clause BSD
+- pep8=1.6.2=py27_0  # Expat license
+- pip=7.1.0=py27_1  # MIT
+- pixman=0.26.2=0  # MIT
+- psutil=3.1.1=py27_0  # BSD
+- ptyprocess=0.4=py27_0  # License :: OSI Approved :: ISC License (ISCL)
+- py=1.4.30=py27_0  # MIT license
+- py2cairo=1.10.0=py27_2  # MPL, LGPL http://cairographics.org/pycairo/
+- pycparser=2.14=py27_0  # BSD
+- pycrypto=2.6.1=py27_0  # Public domain
+- pyflakes=0.9.2=py27_0  # MIT
+- pygments=2.0.2=py27_0  # BSD License
+- pyparsing=2.0.3=py27_0  # MIT License
+- pyqt=4.11.3=py27_1  # Commercial, GPLv2, GPLv3
+- pytables=3.2.0=np19py27_0  # BSD
+- pytest=2.7.2=py27_0  # MIT license
+- python=2.7.10=0  # PSF
+- python-dateutil=2.4.2=py27_0  # Simplified BSD
+- pytz=2015.4=py27_0  # MIT
+- pyyaml=3.11=py27_1  # MIT
+- pyzmq=14.7.0=py27_0  # LGPL+BSD
+- qt=4.8.6=3  # LGPL
+- quandl=2.8.8=np19py27_0  # MIT
+- readline=6.2=2  # GPL3
+- requests=2.7.0=py27_0  # Apache 2.0
+- scikit-learn=0.16.1=np19py27_0  # new BSD
+- scipy=0.16.0=np19py27_0  # BSD
+- seaborn=0.6.0=np19py27_0  # BSD (3-clause)
+- setuptools=18.0.1=py27_0  # PSF or ZPL
+- sip=4.16.5=py27_0  # GPL3
+- six=1.9.0=py27_0  # MIT
+- sqlalchemy=1.0.8=py27_0  # MIT
+- sqlite=3.8.4.1=1  # Public-Domain
+- sqlparse=0.1.15=py27_0  # BSD
+- ssl_match_hostname=3.4.0.2=py27_0  # PSF
+- statsmodels=0.6.1=np19py27_0  # BSD License
+- sympy=0.7.6=py27_0  # BSD
 - system=5.8=2
-- terminado=0.5=py27_0
-- tk=8.5.18=0
-- toolz=0.7.4=py27_0
-- tornado=4.2.1=py27_0
-- ujson=1.33=py27_0
-- werkzeug=0.10.4=py27_0
-- wheel=0.24.0=py27_0
-- xlrd=0.9.4=py27_0
-- yaml=0.1.6=0
-- zeromq=4.0.5=0
-- zlib=1.2.8=0
+- terminado=0.5=py27_0  # License :: OSI Approved :: BSD License
+- tk=8.5.18=0  # BSD-like
+- toolz=0.7.4=py27_0  # BSD
+- tornado=4.2.1=py27_0  # http://www.apache.org/licenses/LICENSE-2.0
+- ujson=1.33=py27_0  # BSD License
+- werkzeug=0.10.4=py27_0  # BSD
+- wheel=0.24.0=py27_0  # MIT
+- xlrd=0.9.4=py27_0  # BSD
+- yaml=0.1.6=0  # MIT
+- zeromq=4.0.5=0  # LGPL
+- zlib=1.2.8=0  # zlib
 - pip:
-  - amqp==1.4.6
-  - anyjson==0.3.3
-  - awscli
-  - backports.ssl-match-hostname==3.4.0.2
-  - beautifulsoup4==4.3.2
-  - billiard==3.3.0.20
-  - celery==3.1.18
-  - cython==0.23.1
-  - docker-py==1.3.1
-  - ediblepickle==1.1.3
-  - filechunkio==1.6
-  - gensim
-  - ipython-sql==0.3.6
-  - kombu==3.0.26
-  - mock==1.3.0
-  - mrjob==0.4.5
-  - oauthlib==1.0.1
-  - prettytable==0.7.2
-  - pydot2==1.0.33
-  - pytidylib==0.2.4
-  - redis==2.10.3
-  - requests-futures==0.9.5
-  - requests-oauthlib==0.5.0
-  - responses==0.4.0
-  - simplejson==3.8.0
-  - tables==3.2.0
-  - tabulate==0.7.5
-  - websocket-client==0.32.0
-
+  - amqp==1.4.6  # LGPL
+  - anyjson==0.3.3  # BSD
+  - awscli==1.10.4  # Apache License 2.0
+  - backports.ssl-match-hostname==3.4.0.2  # Python Software Foundation License
+  - beautifulsoup4==4.3.2  # MIT
+  - billiard==3.3.0.20  # BSD
+  - celery==3.1.18  # BSD
+  - cython==0.23.1  # License :: OSI Approved :: Apache Software License
+  - docker-py==1.3.1  # License :: OSI Approved :: Apache Software License
+  - ediblepickle==1.1.3  # Apache 2.0
+  - filechunkio==1.6  # MIT license
+  - gensim==0.12.4  # LGPL
+  - ipython-sql==0.3.6  # MIT
+  - kombu==3.0.26  # License :: OSI Approved :: BSD License
+  - librosa==0.4.2 # ISC License
+  - mock==1.3.0  # License :: OSI Approved :: BSD License
+  - mrjob==0.4.5  # Apache
+  - oauthlib==1.0.1  # BSD
+  - PrettyTable==0.7.2  # BSD
+  - pydot2==1.0.33  # MIT
+  - pytidylib==0.2.4  # License :: OSI Approved :: MIT License
+  - redis==2.10.3  # MIT
+  - requests-futures==0.9.5  # Apache License v2
+  - requests-oauthlib==0.5.0  # ISC
+  - responses==0.4.0  # Apache 2.0
+  - simplejson==3.8.0  # MIT License
+  - tables==3.2.0  # http://www.opensource.org/licenses/bsd-license.php
+  - tabulate==0.7.5  # License :: OSI Approved :: MIT License
+  - websocket-client==0.32.0  # LGPL
